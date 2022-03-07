@@ -1,0 +1,8 @@
+$color-primary: #e23229;
+$color-secondary: #343841;
+$color-tertiary: #d5d5d5;
+$color-background: #0e1118;
+
+@function toRGB($color) {
+	@return red($color) + ', ' + green($color) + ', ' + blue($color);
+}

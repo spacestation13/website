@@ -1,0 +1,36 @@
+:root {
+	--color-primary: #{toRGB($color-primary)};
+	--color-secondary: #{toRGB($color-secondary)};
+	--color-tertiary: #{toRGB($color-tertiary)};
+	--color-background: #{toRGB($color-background)};
+
+	--nav-height: 3.5rem;
+}
+
+@layer base {
+	html,
+	body,
+	#__nuxt,
+	#__layout {
+		height: 100%;
+	}
+
+	body {
+		@apply bg-background bg-repeat bg-fixed text-white;
+		html.webp & {
+			background-image: url('~assets/img/bg.webp');
+		}
+		html.no-webp & {
+			background-image: url('~assets/img/bg.jpg');
+		}
+	}
+
+	a {
+		color: lighten($color-primary, 5%);
+
+		&:hover,
+		&:active {
+			color: theme('colors.primary');
+		}
+	}
+}

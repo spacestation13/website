@@ -1,0 +1,194 @@
+/*
+name (string)
+logo (string)
+tags (array): ['new', 'casual', 'lightrp', 'mediumrp', 'highrp']
+website (string)
+description (array): array of strings representing paragraphs
+links (array): objects representing game join links:
+	title (string)
+	url (string)
+*/
+
+{
+	servers: [
+		{
+			name: 'Goonstation',
+			logo: 'goonstation.png',
+			tags: ['new', 'casual', 'lightrp'],
+			website: 'https://goonhub.com',
+			description: [
+				"Established way back in 2008, 'Goonstation' is the longest running Space Station 13 Community. Built on top of the original source code, all forks are derived from this codebase. The gameplay style can be considered casual. People will generally play the game in character, but it's not taken entirely seriously. There's little chance of being penalised if you get things wrong, or don't understand your role on the station.",
+			],
+			links: [
+				{
+					title: 'Goonstation #1',
+					ip: 'goon1.goonhub.com',
+					port: 26100,
+					url: 'https://goon1.goonhub.com',
+				},
+				{
+					title: 'Goonstation #2',
+					ip: 'goon2.goonhub.com',
+					port: 26200,
+					url: 'https://goon2.goonhub.com',
+				},
+				{
+					title: 'Goonstation #3 RP',
+					ip: 'goon3.goonhub.com',
+					port: 26300,
+					url: 'https://goon3.goonhub.com',
+				},
+				{
+					title: 'Goonstation #4 RP',
+					ip: 'goon4.goonhub.com',
+					port: 26400,
+					url: 'https://goon4.goonhub.com',
+				},
+			],
+		},
+		{
+			name: '/TG/Station 13',
+			logo: 'tgstation.png',
+			tags: ['experienced', 'lightrp'],
+			website: 'https://tgstation13.org',
+			description: [
+				'/tg/station 13 spawned from the /tg/ (Traditional Games) section of 4chan, an imageboard primarily dedicated to the discussion of board games and tabletop RPGs. Using Goonstation’s publically released codebase as a jumping off point, /tg/station quickly branched off – implementing plenty of features and quality of life improvements to the game, causing it to soar in popularity. Sybil and Basil operate coderbus’s standard /tg/station13 code. A third server called Artyom operates a seperate branch of code, referred to as NTstation. The gameplay style is a comfortable middle-ground between Goonstation and Baystation 12, and a newbie shouldn’t have too many problems jumping in.',
+			],
+			links: [
+				{
+					title: 'Basil',
+					ip: 'bagil.tgstation13.org',
+					port: 2337,
+				},
+				{
+					title: 'Sybil',
+					ip: 'sybil.tgstation13.org',
+					port: 1337,
+				},
+				{
+					title: 'Terry',
+					ip: 'terry.tgstation13.org',
+					port: 3336,
+				},
+				{
+					title: 'Manuel',
+					ip: 'sybil.tgstation13.org',
+					port: 1448,
+				},
+				{
+					title: 'TGMC',
+					ip: 'tgmc.tgstation13.org',
+					port: 5337,
+				},
+				{
+					title: 'Campbell',
+					ip: 'campbell.tgstation13.org',
+					port: 6337,
+				},
+			],
+		},
+		{
+			name: 'CM-SS13',
+			logo: 'cm.png',
+			tags: ['expert', 'mediumrp'],
+			website: 'https://cm-ss13.com/forums',
+			description: [
+				'Colonial Marines is a heavily modified SS13 server inspired by the Aliens film along with it’s surrounding universe and built from Baystation 12. One of the most notable differences between colonial marines and other standard SS13 servers is that the players are split between two teams, the United States Colonial Marines (USCM) and the Xenomorph Hive. The server strikes a thin balance between the fast paced action and the unique roleplay moments that present themselves during the round as it progresses. Some of the most notable features of colonial marines are the perspective sprites, unique xenomorph abilities and the vast array of armaments ready for you to test out and enjoy.',
+			],
+			links: [
+				{
+					title: 'CM',
+					ip: 'play.cm-ss13.com',
+					port: 1400,
+				},
+			],
+		},
+		{
+			name: 'Baystation 12',
+			logo: 'baystation.png',
+			tags: ['expert', 'heavyrp'],
+			website: 'https://bay.ss13.me',
+			description: [
+				'Another long running community, Baystation 12 origins from the Bay 12 Dwarf Fortress Community. Newbies might have a difficult time jumping in here, due to the enforced roleplaying – But you’ll generally have a slower paced and less chaotic experience. Baystation12 is an RP-enforced SS13 community with higher than normal requirements, designed to aid enjoyment and fun for all of its players – And to provide an experience unique from most other servers.',
+			],
+			links: [
+				{
+					title: 'Baystation 12',
+					ip: 'bay.ss13.me',
+					port: 8000,
+				},
+			],
+		},
+		{
+			name: 'Paradise Station',
+			logo: 'paradise.png',
+			tags: ['expert', 'mediumrp'],
+			website: 'https://www.paradisestation.org',
+			description: [
+				'A major codebase and community, Paradise has been consistently ranked as the most populated public SS13 server. Features include a plethora of custom jobs and species to choose from, and a community driven Karma system designed to encourage roleplay. The server tries to strike a balance between calmer, more RP oriented rounds and events, and furious action packed gamemodes – Without compromising the complex interactions of game mechanics. A large team of friendly mentors are available to help even the newest player quickly get on their feet.',
+			],
+			links: [
+				{
+					title: 'Paradise',
+					ip: 'byond.paradisestation.org',
+					port: 6666,
+				},
+			],
+		},
+		{
+			name: 'BeeStation',
+			logo: 'beestation.png',
+			tags: ['new', 'mediumrp'],
+			website: 'https://beestation13.com',
+			description: [
+				'BeeStation is a roleplay server that greatly focuses on being newbie-friendly. There is also a group of mentors who can help you through the steep learning curve of SS13, by answering your questions, or just walking you through basic tasks on the station. Another ongoing goal of theirs is to be the most balanced SS13 server, by constantly tweaking gameplay features to be more fun, and fair. Rounds on BeeStation tend to be very chaotic and fast-paced. The server is a good place to experience high population, and fun features. The code for the server was forked off of the /tg/station codebase.',
+			],
+			links: [
+				{
+					title: 'BeeStation Sage',
+					ip: 'sage.beestation13.com',
+					port: 7878,
+					url: 'https://beestation13.com/join/bs_sage',
+				},
+				{
+					title: 'BeeStation Acacia',
+					ip: 'acacia.beestation13.com',
+					port: 7979,
+					url: 'https://beestation13.com/join/bs_acacia',
+				},
+			],
+		},
+		{
+			name: 'Yogstation',
+			logo: 'yogstation.png',
+			tags: ['new', 'lightrp'],
+			website: 'https://yogstation.net',
+			description: [
+				'Yogstation was founded in 2011 when then-host asked Yogscast if we could have their blessing to open an SS13 server in their name. Yogscast allowed this and even played on the server a handful of times at the start of Yogstations birth. Since 2011, Yogstation has come a long way. The server is now run by a council of elected staff and the codebase is now open with regular contributions from the community as well as downstreaming all TG’s code. Yogstation still stands and is ran on a powerful host machine/dedicated box, runs a donation system for in game and forum perks, and runs at a safe %99 lag free rate. Yogstation is one of SS13’s most long-standing communities far surpassing most others in time. Yogstation runs mentors as well as staff who are always friendly and on-hand to give assistance when needed.',
+			],
+			links: [
+				{
+					title: 'Yogstation Main',
+					ip: 'game.yogstation.net',
+					port: 4133,
+				},
+			],
+		},
+		{
+			name: 'AuStation',
+			logo: 'austation.png',
+			tags: ['casual'],
+			website: 'https://austation.net',
+			description: [
+				'AuStation is the premiere Aussie SS13 server built for Australians and those in the Oceania area. They are an optional roleplay server created for new and veteran players alike looking for relaxed SS13 experience, without the high ping on other servers. As an Australian server, AuStation doesn’t have a huge playerbase, but what they lack in pop, they make back in character. AuStation runs on a dedicated server in Sydney, which guarantees a stable experience for their players. AuStation is a BeeStation downstream and are the currently the only downstream operating a mirror bot which makes sure the server remains up-to-date with new features and fixes. They have a small handful of people working on custom content for the server, and have several features to help improve the lowpop experience including shuttle call votes and automatic sandbox mode switching through the day.',
+			],
+			links: [
+				{
+					title: 'AuStation',
+					ip: 'game.austation.net',
+					port: 2337,
+				},
+			],
+		},
+	],
+}

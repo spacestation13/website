@@ -1,0 +1,50 @@
+@layer utilities {
+	.space-glow {
+		box-shadow: 0 0 20px 2px rgb(var(--color-secondary));
+	}
+
+	.pixel-render {
+		image-rendering: pixelated;
+	}
+
+	.primary-gradient {
+		background: linear-gradient(
+			135deg,
+			rgb(var(--color-primary)) 0%,
+			rgb(177 48 40) 100%
+		);
+	}
+
+	.primary-gradient-dark {
+		background: linear-gradient(135deg, rgb(150 41 26) 0%, rgb(177 48 40) 100%);
+	}
+
+	.secondary-gradient {
+		background: linear-gradient(
+			135deg,
+			rgba($color-background, 0.5) 0%,
+			rgba($color-secondary, 0.9) 100%
+		);
+	}
+
+	.tertiary-gradient {
+		background: linear-gradient(
+			135deg,
+			rgba($color-tertiary, 0.7) 0%,
+			rgba(80, 80, 80, 0.9) 100%
+		);
+	}
+
+	.debris-bg {
+		@media (min-width: 1500px) {
+			html.webp & {
+				background: url('~/assets/img/debris.webp') no-repeat center 300px,
+					url('~/assets/img/spaceman.webp') no-repeat calc(50% - 700px) top;
+			}
+			html.no-webp & {
+				background: url('~/assets/img/debris.png') no-repeat center 300px,
+					url('~/assets/img/spaceman.png') no-repeat calc(50% - 700px) top;
+			}
+		}
+	}
+}

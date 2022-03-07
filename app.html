@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html {{ HTML_ATTRS }}>
+	<head {{ HEAD_ATTRS }}>
+		{{ HEAD }}
+	</head>
+
+	<body {{ BODY_ATTRS }}>
+		{{ APP }}
+	</body>
+
+	<script type="text/javascript">
+		if (/Trident\/|MSIE/.test(window.navigator.userAgent)) {
+			document.body.innerHTML =
+				'<div class="unsupported-browser card">' +
+				'<b>Unsupported browser!</b>' +
+				'<p>This website does not work in Internet Explorer. Please use a modern browser. ' +
+				'For more information, please visit ' +
+				'<a href="https://browser-update.org/update.html" rel="external">this browser update website.</a>' +
+				'</p></div>'
+		}
+	</script>
+</html>
