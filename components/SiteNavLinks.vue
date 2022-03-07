@@ -153,9 +153,7 @@ export default {
 	}
 
 	&__links {
-		@apply relative z-10 mt-2 bg-background rounded-sm max-w-full w-48 overflow-hidden;
-		// box-shadow: 0 0 1px 1px rgb(255 255 255 / 20%),
-		// 						0 0 10px 2px rgb(var(--color-secondary));
+		@apply relative mt-2 bg-background rounded-sm max-w-full w-48 overflow-hidden;
 		box-shadow: 0 0 1px 1px rgb(255 255 255 / 20%);
 
 		> a {

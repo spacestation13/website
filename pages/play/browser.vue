@@ -19,6 +19,7 @@
 						>
 					</span>
 					<HubServerSearch v-model="search" />
+					<HubFilters @filtersChanged="onFiltersChange" />
 				</div>
 			</div>
 			<div v-if="loading" class="p-10 text-center">
@@ -47,8 +48,9 @@
 					:current-page="page"
 					@pagechanged="onPageChange"
 				/>
-				<div>
+				<div class="flex items-center gap-2">
 					<HubServerSearch v-model="search" />
+					<HubFilters @filtersChanged="onFiltersChange" />
 				</div>
 			</div>
 		</div>
@@ -67,6 +69,7 @@ export default {
 		search: '',
 		page: 1,
 		perPage: 15,
+		filters: {}
 	}),
 
 	head() {
@@ -78,6 +81,7 @@ export default {
 	computed: {
 		searchedServers() {
 			return this.servers.filter((server) => {
+				if (server?.meta?.adult && !this.filters.includeAdult) return false
 				return server.status.toLowerCase().includes(this.search.toLowerCase())
 			})
 		},
@@ -104,9 +108,7 @@ export default {
 		this.loading = true
 		try {
 			const data = await this.$apiNode.$get('/hub', { cache: false })
-			const servers = data.response.sort((a, b) => {
-				return b.players - a.players
-			})
+			const servers = data.response.sort((a, b) => b.players - a.players)
 			this.servers = servers
 		} catch (e) {
 			this.error = true
@@ -118,6 +120,10 @@ export default {
 		onPageChange(page) {
 			this.page = page
 		},
+
+		onFiltersChange(filters) {
+			this.filters = filters
+		}
 	},
 }
 </script>

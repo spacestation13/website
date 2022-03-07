@@ -142,7 +142,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 button {
 	@apply p-2 rounded-sm leading-none transition-all ease-in-out duration-200;
 

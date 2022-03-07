@@ -138,4 +138,43 @@
 			@apply mr-1;
 		}
 	}
+
+	.switch {
+		@apply relative inline-block;
+		$switch-padding: 4px;
+		$switch-width: 3em;
+		$switch-height: calc($switch-width / 2);
+		width: $switch-width;
+		height: calc(#{$switch-height} + #{$switch-padding});
+
+		input {
+			width: 0;
+			height: 0;
+			opacity: 0;
+		}
+
+		.slider {
+			@apply absolute inset-0 cursor-pointer transition-all duration-300 rounded-full;
+			background: darken($color-tertiary, 20%);
+
+			&:before {
+				content: '';
+				@apply absolute transition-all duration-300 bg-white rounded-full;
+				height: calc(#{calc($switch-width / 2)} - #{$switch-padding});
+				width: calc(#{calc($switch-width / 2)} - #{$switch-padding});
+				left: $switch-padding;
+				bottom: $switch-padding;
+			}
+		}
+
+		input:checked + .slider {
+			@apply bg-primary;
+		}
+
+		input:checked + .slider:before {
+			transform: translateX(
+				calc(#{calc($switch-width / 2)} - #{$switch-padding})
+			);
+		}
+	}
 }

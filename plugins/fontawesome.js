@@ -17,6 +17,7 @@ export default {
 		'faCircleExclamation',
 		'faCopyright',
 		'faMagnifyingGlassPlus',
+		'faGear',
 	],
 	regular: ['faCircleQuestion'],
 	brands: ['faTwitter', 'faFacebook', 'faGithub'],
