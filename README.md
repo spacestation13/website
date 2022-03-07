@@ -19,4 +19,4 @@ $ yarn start
 $ yarn generate
 ```
 
-For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
+This website is built with NuxtJS. For more information on how that works, check out the [documentation](https://nuxtjs.org).
