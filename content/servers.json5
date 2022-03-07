@@ -104,22 +104,6 @@ links (array): objects representing game join links:
 			],
 		},
 		{
-			name: 'Baystation 12',
-			logo: 'baystation.png',
-			tags: ['expert', 'heavyrp'],
-			website: 'https://bay.ss13.me',
-			description: [
-				'Another long running community, Baystation 12 origins from the Bay 12 Dwarf Fortress Community. Newbies might have a difficult time jumping in here, due to the enforced roleplaying – But you’ll generally have a slower paced and less chaotic experience. Baystation12 is an RP-enforced SS13 community with higher than normal requirements, designed to aid enjoyment and fun for all of its players – And to provide an experience unique from most other servers.',
-			],
-			links: [
-				{
-					title: 'Baystation 12',
-					ip: 'bay.ss13.me',
-					port: 8000,
-				},
-			],
-		},
-		{
 			name: 'Paradise Station',
 			logo: 'paradise.png',
 			tags: ['expert', 'mediumrp'],
