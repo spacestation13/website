@@ -41,11 +41,6 @@ export default {
 			},
 			{
 				quote:
-					'The interconnected systems and sheer variety of content make SS13 utterly without peer.',
-				author: 'The Mittani.com',
-			},
-			{
-				quote:
 					'Almost anything is possible, every round is different, and everyone is insane. And those are just some of the reasons I love Space Station 13.',
 				author: 'PC GAMER',
 			},
