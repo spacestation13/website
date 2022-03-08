@@ -52,7 +52,7 @@ links (array): objects representing game join links:
 			tags: ['experienced', 'lightrp'],
 			website: 'https://tgstation13.org',
 			description: [
-				patch'/tg/station 13 spawned from the /tg/ (Traditional Games) section of 4chan, an imageboard primarily dedicated to the discussion of board games and tabletop RPGs. Using Goonstation’s publically released codebase as a jumping off point, /tg/station quickly branched off – implementing plenty of features and quality of life improvements to the game, causing it to soar in popularity. /tg/station operates a number of servers, with one catering to a higher roleplay style (Manuel), and one built around PvP between Aliens and marines (TGMC)',
+				'/tg/station 13 spawned from the /tg/ (Traditional Games) section of 4chan, an imageboard primarily dedicated to the discussion of board games and tabletop RPGs. Using Goonstation’s publically released codebase as a jumping off point, /tg/station quickly branched off – implementing plenty of features and quality of life improvements to the game, causing it to soar in popularity. /tg/station operates a number of servers, with one catering to a higher roleplay style (Manuel), and one built around PvP between Aliens and marines (TGMC)',
 			],
 			links: [
 				{
