@@ -52,7 +52,7 @@ links (array): objects representing game join links:
 			tags: ['experienced', 'lightrp'],
 			website: 'https://tgstation13.org',
 			description: [
-				'/tg/station 13 spawned from the /tg/ (Traditional Games) section of 4chan, an imageboard primarily dedicated to the discussion of board games and tabletop RPGs. Using Goonstation’s publically released codebase as a jumping off point, /tg/station quickly branched off – implementing plenty of features and quality of life improvements to the game, causing it to soar in popularity. /tg/station operates a number of servers, with one catering to a higher roleplay style (Manuel), and one built around PvP between Aliens and marines (TGMC)',
+				'/tg/Station 13 (from the /tg/ (Traditional Games) section of 4chan), quickly became the primary open source upstream after goonstation went closed source, making them the closest thing to 'vanilla' SS13. /tg/station has multiple servers at multiple locations and roleplaying levels, and annoyingly strides to fit their server perfectly between rp levels. Sybil and Basil in the US and Terry in the EU operate As middleground Low-RP/Medium-RP servers. A third server called Manuel operates as as their middleground Medium-RP/High-RP server, with a EU version in the works since the dawn of man. The gameplay style is a comfortable middle-ground between Goonstation and Baystation 12, and a newbie shouldn’t have too many problems jumping in. They host yearly events that bring in members from the entire ss13 community',
 			],
 			links: [
 				{
