@@ -13,7 +13,11 @@
 			</div>
 		</transition-expand>
 		<transition v-else name="dropdown-content">
-			<div v-if="active" class="absolute left-0 top-full">
+			<div
+				v-if="active"
+				class="absolute top-full z-40"
+				:class="{ 'left-0': align === 'left', 'right-0': align === 'right' }"
+			>
 				<slot />
 			</div>
 		</transition>
@@ -32,6 +36,10 @@ export default {
 		inline: {
 			type: Boolean,
 			default: false,
+		},
+		align: {
+			type: String,
+			default: 'left',
 		},
 	},
 

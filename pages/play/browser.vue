@@ -19,6 +19,7 @@
 						>
 					</span>
 					<HubServerSearch v-model="search" />
+					<HubFilters :filters="filters" @filtersChanged="onFiltersChange" />
 				</div>
 			</div>
 			<div v-if="loading" class="p-10 text-center">
@@ -34,7 +35,7 @@
 				<template v-if="filteredServers.length">
 					<HubServer
 						v-for="server in filteredServers"
-						:key="server.urlID"
+						:key="server.id"
 						v-bind="server"
 					/>
 				</template>
@@ -47,10 +48,22 @@
 					:current-page="page"
 					@pagechanged="onPageChange"
 				/>
-				<div>
+				<div class="flex items-center gap-2">
 					<HubServerSearch v-model="search" />
+					<HubFilters :filters="filters" @filtersChanged="onFiltersChange" />
 				</div>
 			</div>
+		</div>
+
+		<div class="disclaimer">
+			<font-awesome-icon icon="circle-exclamation" size="8x" />
+			<p class="mb-2 font-bold">Heads up!</p>
+			<p>
+				Some servers are filtered out by default because they advertise as
+				adult-only and may contain content inappropriate for all viewers. To
+				include them in the listing, click the settings icon next to the search
+				area.
+			</p>
 		</div>
 	</div>
 </template>
@@ -67,6 +80,7 @@ export default {
 		search: '',
 		page: 1,
 		perPage: 15,
+		filters: {},
 	}),
 
 	head() {
@@ -78,6 +92,7 @@ export default {
 	computed: {
 		searchedServers() {
 			return this.servers.filter((server) => {
+				if (server?.meta?.adult && !this.filters.includeAdult) return false
 				return server.status.toLowerCase().includes(this.search.toLowerCase())
 			})
 		},
@@ -104,9 +119,7 @@ export default {
 		this.loading = true
 		try {
 			const data = await this.$apiNode.$get('/hub', { cache: false })
-			const servers = data.response.sort((a, b) => {
-				return b.players - a.players
-			})
+			const servers = data.response.sort((a, b) => b.players - a.players)
 			this.servers = servers
 		} catch (e) {
 			this.error = true
@@ -117,6 +130,10 @@ export default {
 	methods: {
 		onPageChange(page) {
 			this.page = page
+		},
+
+		onFiltersChange(filters) {
+			this.filters = filters
 		},
 	},
 }
@@ -136,6 +153,16 @@ export default {
 		.pagination {
 			@apply w-auto;
 		}
+	}
+}
+
+.disclaimer {
+	@apply relative bg-secondary bg-opacity-50 rounded-sm pl-12 pr-4 py-6 mt-12
+		overflow-hidden;
+
+	> svg {
+		@apply absolute -top-6 -left-11 opacity-25;
+		z-index: -1;
 	}
 }
 </style>

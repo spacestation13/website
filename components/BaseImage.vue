@@ -139,10 +139,10 @@ export default {
 }
 
 .base-image-close {
-	@apply absolute top-0 right-6;
+	@apply absolute top-2 right-6;
 
 	&:hover {
-		@apply bg-transparent text-primary;
+		@apply text-primary;
 	}
 }
 </style>
