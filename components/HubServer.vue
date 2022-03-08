@@ -16,6 +16,10 @@
 <script>
 export default {
 	props: {
+		id: {
+			type: String,
+			required: true,
+		},
 		urlId: {
 			type: String,
 			required: true,
@@ -27,6 +31,11 @@ export default {
 		players: {
 			type: Number,
 			required: true,
+		},
+		meta: {
+			type: Object,
+			required: false,
+			default: () => ({}),
 		},
 	},
 

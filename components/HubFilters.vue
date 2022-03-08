@@ -12,7 +12,11 @@
 		<div class="dropdown-area">
 			<div class="flex items-center gap-2">
 				<label class="switch">
-					<input id="filterIncludeAdult" v-model="filters.includeAdult" type="checkbox" />
+					<input
+						id="filterIncludeAdult"
+						v-model="dFilters.includeAdult"
+						type="checkbox"
+					/>
 					<span class="slider"></span>
 				</label>
 				<label for="filterIncludeAdult">Include adult-content servers</label>
@@ -23,20 +27,34 @@
 
 <script>
 export default {
-	data: () => ({
+	props: {
 		filters: {
-			includeAdult: false
-		}
+			type: Object,
+			default: () => ({}),
+		},
+	},
+
+	data: () => ({
+		dFilters: {
+			includeAdult: false,
+		},
 	}),
 
 	watch: {
 		filters: {
 			deep: true,
 			handler(newVal) {
+				this.dFilters = newVal
+			},
+		},
+
+		dFilters: {
+			deep: true,
+			handler(newVal) {
 				this.$emit('filtersChanged', newVal)
-			}
-		}
-	}
+			},
+		},
+	},
 }
 </script>
 
@@ -48,8 +66,8 @@ $border-size: 1px;
 		border-secondary rounded-sm max-w-full w-72 text-sm;
 	right: -10px;
 
- 	&:before {
-		content: "";
+	&:before {
+		content: '';
 		@apply border border-secondary bg-background;
 		position: absolute;
 		top: 0;
