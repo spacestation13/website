@@ -59,6 +59,11 @@ export default {
 					'A sci-fi multiplayer sandbox with the same utterly batshit more-is-more design as Dwarf Fortress.',
 				author: 'Rock, Paper, Shotgun',
 			},
+			{
+				quote:
+					'Space Station 13 is different from any other game because, like so many other great things, it was an accident.',
+				author: 'https://return.life - Robert Mariani',
+			},			
 		],
 	}),
 
