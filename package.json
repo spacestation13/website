@@ -43,7 +43,7 @@
 		"@nuxtjs/fontawesome": "^1.1.2",
 		"@nuxtjs/style-resources": "^1.2.1",
 		"@nuxtjs/stylelint-module": "^4.1.0",
-		"@nuxtjs/tailwindcss": "^4.2.1",
+		"@nuxtjs/tailwindcss": "^5.0.0",
 		"eslint": "^8.4.1",
 		"eslint-config-prettier": "^8.3.0",
 		"eslint-plugin-nuxt": "^3.1.0",
