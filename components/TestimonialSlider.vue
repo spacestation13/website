@@ -63,7 +63,7 @@ export default {
 				quote:
 					'Space Station 13 is different from any other game because, like so many other great things, it was an accident.',
 				author: 'https://return.life - Robert Mariani',
-			},			
+			},
 		],
 	}),
 
