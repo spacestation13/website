@@ -85,9 +85,10 @@ export default {
 					},
 				})
 
-				const gameData = data.meta.jsontopic
+				let gameData = data.meta.jsontopic
 					? data.response.data
 					: data.response
+				if (typeof gameData === 'string') gameData = JSON.parse(gameData)
 				if (!('players' in gameData) || Number.isNaN(gameData.players)) {
 					throw new TypeError('No players key')
 				}
