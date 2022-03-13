@@ -69,10 +69,6 @@ export default {
 		this.getStatus()
 	},
 
-	beforeDestroy() {
-		// this.requestSource.cancel()
-	},
-
 	methods: {
 		async getStatus() {
 			this.loading = true
@@ -88,13 +84,14 @@ export default {
 						port: this.port,
 					},
 				})
-				if (
-					!('players' in data.response) ||
-					Number.isNaN(data.response.players)
-				) {
+
+				const gameData = data.meta.jsontopic
+					? data.response.data
+					: data.response
+				if (!('players' in gameData) || Number.isNaN(gameData.players)) {
 					throw new TypeError('No players key')
 				}
-				this.players = parseInt(data.response.players)
+				this.players = parseInt(gameData.players)
 			} catch (e) {
 				this.error = true
 			}
