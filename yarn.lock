@@ -2695,10 +2695,10 @@ autoprefixer@^9.6.1:
     postcss "^7.0.32"
     postcss-value-parser "^4.1.0"
 
-axios-cache-interceptor@^0.9.1:
-  version "0.9.3"
-  resolved "https://registry.yarnpkg.com/axios-cache-interceptor/-/axios-cache-interceptor-0.9.3.tgz#4e95130f3f94af8dc390ff70d7ae387a7c1d957f"
-  integrity sha512-2gftpDWH8yajxjl9gBOD2ZvLaavaLM2uoLvgalwOPlLpr8KOriKO58UYJBZnuTei4rFAl40w4KQjcgtwEU0jXw==
+axios-cache-interceptor@^0.10.1:
+  version "0.10.1"
+  resolved "https://registry.yarnpkg.com/axios-cache-interceptor/-/axios-cache-interceptor-0.10.1.tgz#d5efcf2495a528241baf0105097bf89f5ed5adac"
+  integrity sha512-DvMYUHm+EWqmYhi0PkFnoJIzjjr6yHQ5pbpD4mH9qsR25rY16H7B1aFpM29xxSIkFN7Q9/SqupWANVzrGQfhmg==
   dependencies:
     cache-parser "^1.2.2"
     fast-defer "^1.1.5"
@@ -4104,8 +4104,9 @@ decompress-response@^6.0.0:
   dependencies:
     mimic-response "^3.1.0"
 
-"dedent@github:dword-design/dedent#fork":
+dedent@dword-design/dedent#fork:
   version "0.7.0"
+  uid c8d46e5017d60504657c2d01b59082c0329a12a7
   resolved "https://codeload.github.com/dword-design/dedent/tar.gz/c8d46e5017d60504657c2d01b59082c0329a12a7"
   dependencies:
     babel-plugin-add-module-exports "^1.0.2"
