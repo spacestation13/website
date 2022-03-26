@@ -39,37 +39,42 @@ export default {
 		},
 	},
 
-	beforeMount() {
-		// Handle adding brackets to server text
-		const statusSplit = this.status.split("<br>");
-		let addPrefixBracket = false;
-		let addSuffixBracket = false;
+	computed: {
+		newStatus() {
+			// Handle adding brackets to server text
+			let newStatus = this.status
+			const statusSplit = this.status.split('<br>')
+			let addPrefixBracket = false
+			let addSuffixBracket = false
 
-		if(statusSplit.length > 0) {
-			// Check first line
-			const leftFirstCount = statusSplit[0].split("[").length - 1;
-			const rightFirstCount = statusSplit[0].split("]").length - 1;
-			if(rightFirstCount > leftFirstCount) {
-				addPrefixBracket = true;
+			if (statusSplit.length > 0) {
+				// Check first line
+				const leftFirstCount = statusSplit[0].split('[').length - 1
+				const rightFirstCount = statusSplit[0].split(']').length - 1
+				if (rightFirstCount > leftFirstCount) {
+					addPrefixBracket = true
+				}
+
+				// Check last line
+				const leftLastCount =
+					statusSplit[statusSplit.length - 1].split('[').length - 1
+				const rightLastCount =
+					statusSplit[statusSplit.length - 1].split(']').length - 1
+				if (leftLastCount > rightLastCount) {
+					addSuffixBracket = true
+				}
 			}
 
-			// Check last line
-			const leftLastCount = statusSplit[statusSplit.length - 1].split("[").length - 1;
-			const rightLastCount = statusSplit[statusSplit.length - 1].split("]").length - 1;
-			if(leftLastCount > rightLastCount) {
-				addSuffixBracket = true;
+			// Actually add it
+			if (addPrefixBracket) {
+				newStatus = '[' + newStatus
 			}
-		}
+			if (addSuffixBracket) {
+				newStatus = newStatus + ']'
+			}
 
-		this.newStatus = this.status;
-
-		// Actually add it
-		if(addPrefixBracket) {
-			this.newStatus = "[" + this.newStatus;
-		}
-		if(addSuffixBracket) {
-			this.newStatus = this.newStatus + "]";
-		}
+			return newStatus
+		},
 	},
 
 	mounted() {
