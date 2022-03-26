@@ -16,6 +16,8 @@ updates:
       prefix-development: chore
       include: scope
     ignore:
+      - dependency-name: '*'
+        update-types: ['version-update:semver-major']
       - dependency-name: 'vue'
       - dependency-name: 'webpack'
       - dependency-name: '@nuxtjs/tailwindcss'
