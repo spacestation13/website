@@ -57,7 +57,7 @@ links (array): objects representing game join links:
 			links: [
 				{
 					title: 'Basil',
-					ip: 'bagil.tgstation13.org',
+					ip: 'basil.tgstation13.org',
 					port: 2337,
 				},
 				{
