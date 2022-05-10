@@ -1,0 +1,7 @@
+This CODEOWNERS file is valid.
+# This list auto-requests reviews from the specified users
+# when a PR that modifies the file in question is opened
+# See GitHub documentation for more details.
+
+# Wire needs to manually deploy all changes
+* @Wirewraith
