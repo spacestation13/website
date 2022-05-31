@@ -2745,14 +2745,14 @@ autoprefixer@^9.6.1:
     postcss "^7.0.32"
     postcss-value-parser "^4.1.0"
 
-axios-cache-interceptor@^0.9.1:
-  version "0.9.3"
-  resolved "https://registry.yarnpkg.com/axios-cache-interceptor/-/axios-cache-interceptor-0.9.3.tgz#4e95130f3f94af8dc390ff70d7ae387a7c1d957f"
-  integrity sha512-2gftpDWH8yajxjl9gBOD2ZvLaavaLM2uoLvgalwOPlLpr8KOriKO58UYJBZnuTei4rFAl40w4KQjcgtwEU0jXw==
+axios-cache-interceptor@^0.10.3:
+  version "0.10.3"
+  resolved "https://registry.yarnpkg.com/axios-cache-interceptor/-/axios-cache-interceptor-0.10.3.tgz#a7f92ad0e7afefb6b378131c8bdcfd4f349010ed"
+  integrity sha512-oyHlhmA6zzZJDk/ZMPWPNmO3z8gBU3mWIqAZy+GIUsvwpmwyPlC2XvZ3PTOZHgpWI2kEocMUhk3+w9VwMXfZ4w==
   dependencies:
-    cache-parser "^1.2.2"
-    fast-defer "^1.1.5"
-    object-code "^1.2.0"
+    cache-parser "^1.2.4"
+    fast-defer "^1.1.7"
+    object-code "^1.2.2"
 
 axios-retry@^3.1.9:
   version "3.2.5"
@@ -3153,7 +3153,7 @@ cache-loader@^4.1.0:
     neo-async "^2.6.1"
     schema-utils "^2.0.0"
 
-cache-parser@^1.2.2:
+cache-parser@^1.2.4:
   version "1.2.4"
   resolved "https://registry.yarnpkg.com/cache-parser/-/cache-parser-1.2.4.tgz#60975135ef2330e6a1d60895279d7237a2a9b398"
   integrity sha512-O0KwuHuJnbHUrghHi2kGp0SxnWSIBXTYt7M8WVhW0kbPRUNUKoE/Of6e1rRD6AAxmfxFunKnt90yEK09D+sc5g==
@@ -4149,8 +4149,9 @@ decompress-response@^6.0.0:
   dependencies:
     mimic-response "^3.1.0"
 
-"dedent@github:dword-design/dedent#fork":
+dedent@dword-design/dedent#fork:
   version "0.7.0"
+  uid c8d46e5017d60504657c2d01b59082c0329a12a7
   resolved "https://codeload.github.com/dword-design/dedent/tar.gz/c8d46e5017d60504657c2d01b59082c0329a12a7"
   dependencies:
     babel-plugin-add-module-exports "^1.0.2"
@@ -5012,7 +5013,7 @@ fast-deep-equal@^3.1.1, fast-deep-equal@^3.1.3:
   resolved "https://registry.yarnpkg.com/fast-deep-equal/-/fast-deep-equal-3.1.3.tgz#3a7d56b559d6cbc3eb512325244e619a65c6c525"
   integrity sha512-f3qQ9oQy9j2AhBe/H9VC91wLmKBCCU/gDOnKNAYG5hswO7BLKj09Hc5HYNz9cGI++xlpDCIgDaitVs03ATR84Q==
 
-fast-defer@^1.1.5:
+fast-defer@^1.1.7:
   version "1.1.7"
   resolved "https://registry.yarnpkg.com/fast-defer/-/fast-defer-1.1.7.tgz#943bc3c7a876d437360318ab1e1f269a29f31ba4"
   integrity sha512-tJ01ulDWT2WhqxMKS20nXX6wyX2iInBYpbN3GO7yjKwXMY4qvkdBRxak9IFwBLlFDESox+SwSvqMCZDfe1tqeg==
@@ -7972,7 +7973,7 @@ object-assign@^4.0.1, object-assign@^4.1.0, object-assign@^4.1.1:
   resolved "https://registry.yarnpkg.com/object-assign/-/object-assign-4.1.1.tgz#2109adc7965887cfc05cbbd442cac8bfbb360863"
   integrity sha1-IQmtx5ZYh8/AXLvUQsrIv7s2CGM=
 
-object-code@^1.2.0:
+object-code@^1.2.2:
   version "1.2.4"
   resolved "https://registry.yarnpkg.com/object-code/-/object-code-1.2.4.tgz#c356b1c5237272e736a3843c6086ca09a754b277"
   integrity sha512-uGq4ETUuWe+GA586NXEriiaozNuff+YNFXlpD8cVrM1GoiuTZpCABP+bZCWDrvQDoCiSTyiWAFHD/HF/iwhb2w==
