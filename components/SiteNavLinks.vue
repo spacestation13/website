@@ -27,7 +27,7 @@
 
 		<div class="social-links ml-auto pl-4 items-center flex gap-2">
 			<a
-				href="https://twitter.com/SpaceStation13"
+				href="https://twitter.com/Spacestation13"
 				target="_blank"
 				rel="external"
 				aria-label="Twitter"
