@@ -4149,8 +4149,9 @@ decompress-response@^6.0.0:
   dependencies:
     mimic-response "^3.1.0"
 
-"dedent@github:dword-design/dedent#fork":
+dedent@dword-design/dedent#fork:
   version "0.7.0"
+  uid c8d46e5017d60504657c2d01b59082c0329a12a7
   resolved "https://codeload.github.com/dword-design/dedent/tar.gz/c8d46e5017d60504657c2d01b59082c0329a12a7"
   dependencies:
     babel-plugin-add-module-exports "^1.0.2"
@@ -10022,9 +10023,9 @@ safe-regex@^2.1.1:
   integrity sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==
 
 sass-loader@10:
-  version "10.2.1"
-  resolved "https://registry.yarnpkg.com/sass-loader/-/sass-loader-10.2.1.tgz#17e51df313f1a7a203889ce8ff91be362651276e"
-  integrity sha512-RRvWl+3K2LSMezIsd008ErK4rk6CulIMSwrcc2aZvjymUgKo/vjXGp1rSWmfTUX7bblEOz8tst4wBwWtCGBqKA==
+  version "10.3.0"
+  resolved "https://registry.yarnpkg.com/sass-loader/-/sass-loader-10.3.0.tgz#d663f98ce3faee247fa0ed46321db3f9618ee202"
+  integrity sha512-H2cLgK0PiH+5KsdSzw41uqx1ph7OP68+bK03JliezXjvSgKfddHyD7biCJge8ygHSEH0zo9sO8Jf6BN5sKs/Ig==
   dependencies:
     klona "^2.0.4"
     loader-utils "^2.0.0"
