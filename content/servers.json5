@@ -158,21 +158,5 @@ links (array): objects representing game join links:
 				},
 			],
 		},
-		{
-			name: 'AuStation',
-			logo: 'austation.png',
-			tags: ['casual'],
-			website: 'https://austation.net',
-			description: [
-				'AuStation is the premiere Aussie SS13 server built for Australians and those in the Oceania area. They are an optional roleplay server created for new and veteran players alike looking for relaxed SS13 experience, without the high ping on other servers. As an Australian server, AuStation doesn’t have a huge playerbase, but what they lack in pop, they make back in character. AuStation runs on a dedicated server in Sydney, which guarantees a stable experience for their players. AuStation is a BeeStation downstream and are the currently the only downstream operating a mirror bot which makes sure the server remains up-to-date with new features and fixes. They have a small handful of people working on custom content for the server, and have several features to help improve the lowpop experience including shuttle call votes and automatic sandbox mode switching through the day.',
-			],
-			links: [
-				{
-					title: 'AuStation',
-					ip: 'game.austation.net',
-					port: 2337,
-				},
-			],
-		},
 	],
 }
