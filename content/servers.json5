@@ -26,12 +26,12 @@ links (array): objects representing game join links:
 					port: 26100,
 					url: 'https://goon1.goonhub.com',
 				},
-				{
-					title: 'Goonstation #2',
-					ip: 'goon2.goonhub.com',
-					port: 26200,
-					url: 'https://goon2.goonhub.com',
-				},
+				//{
+				//	title: 'Goonstation #2',
+				//	ip: 'goon2.goonhub.com',
+				//	port: 26200,
+				//	url: 'https://goon2.goonhub.com',
+				//},
 				{
 					title: 'Goonstation #3 RP',
 					ip: 'goon3.goonhub.com',
