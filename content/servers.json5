@@ -72,8 +72,8 @@ links (array): objects representing game join links:
 				},
 				{
 					title: 'Manuel',
-					ip: 'sybil.tgstation13.org',
-					port: 1448,
+					ip: 'manuel.tgstation13.org',
+					port: 1447,
 				},
 				{
 					title: 'TGMC',
