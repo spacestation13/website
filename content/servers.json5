@@ -100,6 +100,7 @@ links (array): objects representing game join links:
 					title: 'CM',
 					ip: 'play.cm-ss13.com',
 					port: 1400,
+					url: 'https://play.cm-ss13.com',
 				},
 			],
 		},
