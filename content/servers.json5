@@ -110,7 +110,7 @@ links (array): objects representing game join links:
 			tags: ['expert', 'mediumrp'],
 			website: 'https://www.paradisestation.org',
 			description: [
-				'A major codebase and community, Paradise has been consistently ranked as the most populated public SS13 server. Features include a plethora of custom jobs and species to choose from, and a community driven Karma system designed to encourage roleplay. The server tries to strike a balance between calmer, more RP oriented rounds and events, and furious action packed gamemodes – Without compromising the complex interactions of game mechanics. A large team of friendly mentors are available to help even the newest player quickly get on their feet.',
+				'A major codebase and community, Paradise has been consistently ranked as the most populated public SS13 server. Notable things include a plethora of custom jobs and species to choose from, and a focus on a lag free experience over feature bloat. The server tries to strike a balance between calmer, more RP oriented rounds and events, and intense action packed gamemodes – Without compromising the complex interactions of game mechanics. A large team of friendly mentors are available to help even the newest player quickly get on their feet.',
 			],
 			links: [
 				{
