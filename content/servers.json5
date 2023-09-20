@@ -91,7 +91,7 @@ links (array): objects representing game join links:
 			name: 'CM-SS13',
 			logo: 'cm.png',
 			tags: ['expert', 'mediumrp'],
-			website: 'https://cm-ss13.com/forums',
+			website: 'https://cm-ss13.com',
 			description: [
 				'Colonial Marines is a heavily modified SS13 server inspired by the Aliens film along with it’s surrounding universe and built from Baystation 12. One of the most notable differences between colonial marines and other standard SS13 servers is that the players are split between two teams, the United States Colonial Marines (USCM) and the Xenomorph Hive. The server strikes a thin balance between the fast paced action and the unique roleplay moments that present themselves during the round as it progresses. Some of the most notable features of colonial marines are the perspective sprites, unique xenomorph abilities and the vast array of armaments ready for you to test out and enjoy.',
 			],
