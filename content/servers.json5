@@ -134,7 +134,7 @@ links (array): objects representing game join links:
 					ip: 'sage.beestation13.com',
 					port: 7878,
 					url: 'https://beestation13.com/join/bs_sage',
-				}
+				},
 			],
 		},
 		{
