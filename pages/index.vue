@@ -60,7 +60,7 @@
 								and uncover their secrets.
 							</li>
 							<li>
-								Be wary of imposters among the crew, out to kill you and others!
+								Suss out imposters among the crew, out to kill you and others!
 								Deduce their identities with quick wits or forensics.
 							</li>
 							<li>
