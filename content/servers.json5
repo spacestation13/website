@@ -137,21 +137,5 @@ links (array): objects representing game join links:
 				},
 			],
 		},
-		{
-			name: 'Yogstation',
-			logo: 'yogstation.png',
-			tags: ['new', 'lightrp'],
-			website: 'https://yogstation.net',
-			description: [
-				'Yogstation was founded in 2011 when then-host asked Yogscast if we could have their blessing to open an SS13 server in their name. Yogscast allowed this and even played on the server a handful of times at the start of Yogstations birth. Since 2011, Yogstation has come a long way. The server is now run by a council of elected staff and the codebase is now open with regular contributions from the community as well as downstreaming all TG’s code. Yogstation still stands and is ran on a powerful host machine/dedicated box, runs a donation system for in game and forum perks, and runs at a safe %99 lag free rate. Yogstation is one of SS13’s most long-standing communities far surpassing most others in time. Yogstation runs mentors as well as staff who are always friendly and on-hand to give assistance when needed.',
-			],
-			links: [
-				{
-					title: 'Yogstation Main',
-					ip: 'game.yogstation.net',
-					port: 4133,
-				},
-			],
-		},
 	],
 }
