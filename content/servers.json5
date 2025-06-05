@@ -151,6 +151,7 @@ links (array): objects representing game join links:
 					ip: 'https://play.monkestation.com',
 					port: 4133,
 				},
+			],
 		},
 	],
 }
