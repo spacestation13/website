@@ -24,7 +24,7 @@
 				>
 					<div v-if="tags.length" class="flex flex-wrap items-start gap-2">
 						<component
-							:is="`ServerTagsTag${getTagComponent(tag)}`"
+							:is="getTagComponent(tag)"
 							v-for="(tag, index) in tags"
 							:key="index"
 						/>
@@ -37,9 +37,9 @@
 							class="cta cta--xs cta--grey block whitespace-nowrap"
 						>
 							Website
-							<font-awesome-icon
-								icon="external-link"
-								class="relative ml-2 top-[-1px]"
+							<Icon
+								name="fa6-solid:square-arrow-up-right"
+								class="relative ml-1 bottom-[-1px]"
 							/>
 						</a>
 					</div>
@@ -63,48 +63,46 @@
 	</div>
 </template>
 
-<script>
-export default {
-	props: {
-		name: {
-			type: String,
-			required: true,
-		},
-		logo: {
-			type: String,
-			required: true,
-		},
-		tags: {
-			type: Array,
-			required: false,
-			default: () => [],
-		},
-		website: {
-			type: String,
-			required: false,
-			default: '',
-		},
-		description: {
-			type: Array,
-			required: true,
-		},
-		links: {
-			type: Array,
-			required: true,
-		},
+<script setup>
+defineProps({
+	name: {
+		type: String,
+		required: true,
 	},
+	logo: {
+		type: String,
+		required: true,
+	},
+	tags: {
+		type: Array,
+		required: false,
+		default: () => [],
+	},
+	website: {
+		type: String,
+		required: false,
+		default: '',
+	},
+	description: {
+		type: Array,
+		required: true,
+	},
+	links: {
+		type: Array,
+		required: true,
+	},
+})
 
-	methods: {
-		getTagComponent(tag) {
-			if (tag === 'new') return 'New'
-			if (tag === 'casual') return 'Casual'
-			if (tag === 'experienced') return 'Experienced'
-			if (tag === 'expert') return 'Expert'
-			if (tag === 'lightrp') return 'LightRP'
-			if (tag === 'mediumrp') return 'MediumRP'
-			if (tag === 'heavyrp') return 'HeavyRP'
-		},
-	},
+const getTagComponent = (tag) => {
+	let type = ''
+	if (tag === 'new') type = 'New'
+	if (tag === 'casual') type = 'Casual'
+	if (tag === 'experienced') type = 'Experienced'
+	if (tag === 'expert') type = 'Expert'
+	if (tag === 'lightrp') type = 'LightRP'
+	if (tag === 'mediumrp') type = 'MediumRP'
+	if (tag === 'heavyrp') type = 'HeavyRP'
+	return defineAsyncComponent(() => import(`./ServerTags/Tag${type}.vue`))
 }
 </script>
 

@@ -1,5 +1,5 @@
 <template>
-	<ul class="pagination flex justify-center">
+	<ul class="pagination flex items-center justify-center">
 		<li>
 			<button
 				type="button"
@@ -7,7 +7,7 @@
 				aria-label="Go to first page"
 				@click="onClickFirstPage"
 			>
-				<font-awesome-icon icon="angles-left" />
+				<Icon name="fa6-solid:angles-left" />
 			</button>
 		</li>
 		<li>
@@ -17,7 +17,7 @@
 				aria-label="Go to previous page"
 				@click="onClickPreviousPage"
 			>
-				<font-awesome-icon icon="angle-left" />
+				<Icon name="fa6-solid:angle-left" />
 			</button>
 		</li>
 
@@ -40,7 +40,7 @@
 				aria-label="Go to next page"
 				@click="onClickNextPage"
 			>
-				<font-awesome-icon icon="angle-right" />
+				<Icon name="fa6-solid:angle-right" />
 			</button>
 		</li>
 		<li>
@@ -50,105 +50,105 @@
 				aria-label="Go to last page"
 				@click="onClickLastPage"
 			>
-				<font-awesome-icon icon="angles-right" />
+				<Icon name="fa6-solid:angles-right" />
 			</button>
 		</li>
 	</ul>
 </template>
 
-<script>
-export default {
-	name: 'PaginationHelper',
-	props: {
-		maxVisibleButtons: {
-			type: Number,
-			required: false,
-			default: 3,
-		},
-		totalPages: {
-			type: Number,
-			required: true,
-		},
-		perPage: {
-			type: Number,
-			required: true,
-		},
-		currentPage: {
-			type: Number,
-			required: true,
-		},
+<script setup>
+const props = defineProps({
+	maxVisibleButtons: {
+		type: Number,
+		required: false,
+		default: 3,
 	},
-
-	computed: {
-		startPage() {
-			// When on the first page
-			if (this.currentPage === 1) {
-				return 1
-			}
-
-			// When on the last page
-			if (this.currentPage === this.totalPages) {
-				const start = this.totalPages - (this.maxVisibleButtons - 1)
-				return start === 0 ? 1 : start
-			}
-
-			// When inbetween
-			return this.currentPage - 1
-		},
-		endPage() {
-			return Math.min(
-				this.startPage + this.maxVisibleButtons - 1,
-				this.totalPages
-			)
-		},
-		pages() {
-			const range = []
-			for (let i = this.startPage; i <= this.endPage; i++) {
-				range.push({
-					name: i,
-					isDisabled: i === this.currentPage,
-				})
-			}
-			return range
-		},
-		isInFirstPage() {
-			return this.currentPage === 1
-		},
-		isInLastPage() {
-			return this.currentPage === this.totalPages
-		},
+	totalPages: {
+		type: Number,
+		required: true,
 	},
-
-	methods: {
-		onClickFirstPage() {
-			this.$emit('pagechanged', 1)
-		},
-		onClickPreviousPage() {
-			this.$emit('pagechanged', this.currentPage - 1)
-		},
-		onClickPage(page) {
-			this.$emit('pagechanged', page)
-		},
-		onClickNextPage() {
-			this.$emit('pagechanged', this.currentPage + 1)
-		},
-		onClickLastPage() {
-			this.$emit('pagechanged', this.totalPages)
-		},
-		isPageActive(page) {
-			return this.currentPage === page
-		},
+	perPage: {
+		type: Number,
+		required: true,
 	},
+	currentPage: {
+		type: Number,
+		required: true,
+	},
+})
+
+const emit = defineEmits(['pagechanged'])
+
+const startPage = computed(() => {
+	// When on the first page
+	if (props.currentPage === 1) {
+		return 1
+	}
+
+	// When on the last page
+	if (props.currentPage === props.totalPages) {
+		const start = props.totalPages - (props.maxVisibleButtons - 1)
+		return start === 0 ? 1 : start
+	}
+
+	// When inbetween
+	return props.currentPage - 1
+})
+
+const endPage = computed(() =>
+	Math.min(startPage.value + props.maxVisibleButtons - 1, props.totalPages),
+)
+
+const pages = computed(() => {
+	const range = []
+	for (let i = startPage.value; i <= endPage.value; i++) {
+		range.push({
+			name: i,
+			isDisabled: i === props.currentPage,
+		})
+	}
+	return range
+})
+
+const isInFirstPage = computed(() => props.currentPage === 1)
+const isInLastPage = computed(() => props.currentPage === props.totalPages)
+
+const onClickFirstPage = () => {
+	emit('pagechanged', 1)
+}
+
+const onClickPreviousPage = () => {
+	emit('pagechanged', props.currentPage - 1)
+}
+
+const onClickPage = (page) => {
+	emit('pagechanged', page)
+}
+
+const onClickNextPage = () => {
+	emit('pagechanged', props.currentPage + 1)
+}
+
+const onClickLastPage = () => {
+	emit('pagechanged', props.totalPages)
+}
+
+const isPageActive = (page) => {
+	return props.currentPage === page
 }
 </script>
 
 <style lang="scss" scoped>
-button {
-	@apply p-2 rounded-sm leading-none transition-all ease-in-out duration-200;
+ul {
+	height: 34px;
+}
 
-	&:disabled {
-		@apply cursor-default;
-	}
+li {
+	@apply flex items-center h-full;
+}
+
+button {
+	@apply flex items-center h-full px-2 rounded-sm leading-none transition-all ease-in-out duration-200;
 
 	&:disabled:not(.active) {
 		@apply opacity-50;

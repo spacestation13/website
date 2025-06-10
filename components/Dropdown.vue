@@ -1,6 +1,6 @@
 <template>
 	<div
-		v-on-clickaway="away"
+		v-click-outside="away"
 		class="relative"
 		:class="{ 'dropdown--active': active }"
 	>
@@ -24,44 +24,34 @@
 	</div>
 </template>
 
-<script>
-import { mixin as clickaway } from 'vue-clickaway'
-
-export default {
-	name: 'MenuDropdown',
-
-	mixins: [clickaway],
-
-	props: {
-		inline: {
-			type: Boolean,
-			default: false,
-		},
-		align: {
-			type: String,
-			default: 'left',
-		},
+<script setup>
+defineProps({
+	inline: {
+		type: Boolean,
+		default: false,
 	},
-
-	data: () => ({
-		active: false,
-	}),
-
-	watch: {
-		$route() {
-			this.active = false
-		},
+	align: {
+		type: String,
+		default: 'left',
 	},
+})
 
-	methods: {
-		toggle() {
-			this.active = !this.active
-		},
+const active = ref(false)
+const route = useRoute()
 
-		away() {
-			this.active = false
-		},
+watch(
+	() => route.path,
+	() => {
+		active.value = false
 	},
+)
+
+const toggle = () => {
+	active.value = !active.value
+}
+
+const away = () => {
+	active.value = false
 }
 </script>
 
@@ -71,7 +61,7 @@ export default {
 	transition: all 0.2s;
 }
 
-.dropdown-content-enter,
+.dropdown-content-enter-from,
 .dropdown-content-leave-to {
 	opacity: 0;
 	transform: translateY(-5px);

@@ -1,103 +1,114 @@
 <template>
 	<div>
 		<button
+			ref="imageButton"
 			type="button"
 			class="block relative p-0 rounded-none base-image-wrap"
 			@click="open = true"
 		>
-			<nuxt-picture v-bind="$attrs" :src="src" :width="width" />
+			<nuxt-picture
+				:src="src"
+				:width="width"
+				:height="height"
+				:img-attrs="imgAttrs"
+			/>
 
 			<span>
-				<font-awesome-icon icon="magnifying-glass-plus" size="2x" />
+				<Icon name="fa6-solid:magnifying-glass-plus" size="2em" />
 			</span>
 		</button>
 
 		<div v-if="open" class="base-image-modal">
 			<div>
 				<nuxt-picture
-					v-on-clickaway="away"
+					v-click-outside="away"
 					class="inline-block rounded-sm"
+					loading="lazy"
 					:src="src"
+					:width="width"
+					:height="height"
 					:sizes="sizes"
 					:img-attrs="{ class: 'mx-auto' }"
 					@load="onImageLoad"
 				/>
-				<font-awesome-icon
+				<Icon
 					v-if="loading"
+					name="svg-spinners:6-dots-scale"
 					class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-					icon="spinner"
-					size="lg"
-					spin
+					size="2em"
 				/>
 			</div>
 
 			<button type="button" class="base-image-close" @click="open = false">
-				<font-awesome-icon icon="close" size="2x" />
+				<Icon name="fa6-solid:xmark" size="2em" />
 			</button>
 		</div>
 	</div>
 </template>
 
-<script>
-import { mixin as clickaway } from 'vue-clickaway'
-
-export default {
-	mixins: [clickaway],
-
-	props: {
-		src: {
-			type: String,
-			required: true,
-		},
-		width: {
-			type: String,
-			required: false,
-			default: '',
-		},
+<script setup>
+const props = defineProps({
+	src: {
+		type: String,
+		required: true,
 	},
-
-	data: () => ({
-		open: false,
-		loading: false,
-	}),
-
-	computed: {
-		sizes() {
-			return this.width ? `xs:${this.width}` : false
-		},
+	width: {
+		type: String,
+		required: false,
+		default: '',
 	},
-
-	watch: {
-		open(isOpen) {
-			if (isOpen) {
-				this.loading = true
-				document.addEventListener('keyup', this.onKeyPress)
-			} else {
-				document.removeEventListener('keyup', this.onKeyPress)
-			}
-		},
+	height: {
+		type: String,
+		required: false,
+		default: '',
 	},
-
-	beforeDestroy() {
-		document.removeEventListener('keyup', this.onKeyPress)
+	imgAttrs: {
+		type: Object,
+		required: false,
+		default: () => ({}),
 	},
+})
 
-	methods: {
-		away() {
-			this.open = false
-		},
+const imageButton = ref(null)
+const open = ref(false)
+const loading = ref(false)
 
-		onKeyPress(e) {
-			if (e.key === 'Escape') {
-				this.open = false
-			}
-		},
+const sizes = computed(() => {
+	return props.width ? `${props.width}` : false
+})
 
-		onImageLoad() {
-			this.loading = false
-		},
-	},
+const onKeyPress = (e) => {
+	if (e.key === 'Escape') {
+		open.value = false
+	}
 }
+
+const away = (e) => {
+	if (imageButton.value === e.target || imageButton.value.contains(e.target)) {
+		return
+	}
+
+	if (open.value) {
+		open.value = false
+	}
+}
+
+const onImageLoad = () => {
+	loading.value = false
+}
+
+watch(open, (isOpen) => {
+	if (isOpen) {
+		loading.value = true
+		document.addEventListener('keyup', onKeyPress)
+	} else {
+		document.removeEventListener('keyup', onKeyPress)
+	}
+})
+
+onBeforeUnmount(() => {
+	document.removeEventListener('keyup', onKeyPress)
+})
 </script>
 
 <style lang="scss" scoped>
@@ -106,7 +117,7 @@ export default {
 		@apply absolute z-10 bg-background bg-opacity-50 bottom-0 top-full inset-x-0
 			opacity-0 transition-all duration-200;
 
-		svg {
+		> span {
 			@apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
 		}
 	}

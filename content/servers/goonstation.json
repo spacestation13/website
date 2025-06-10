@@ -1,0 +1,30 @@
+{
+	"name": "Goonstation",
+	"logo": "goonstation.png",
+	"created": "2022-03-06 12:00:00",
+	"tags": ["new", "casual", "lightrp"],
+	"website": "https://goonhub.com",
+	"description": [
+		"Established way back in 2008, 'Goonstation' is the longest running Space Station 13 Community. Built on top of the original source code, all forks are derived from this codebase. The gameplay style can be considered casual. People will generally play the game in character, but it's not taken entirely seriously. There's little chance of being penalised if you get things wrong, or don't understand your role on the station."
+	],
+	"links": [
+		{
+			"title": "Goonstation #1",
+			"ip": "goon1.goonhub.com",
+			"port": 26100,
+			"url": "https://goon1.goonhub.com"
+		},
+		{
+			"title": "Goonstation #3 RP",
+			"ip": "goon3.goonhub.com",
+			"port": 26300,
+			"url": "https://goon3.goonhub.com"
+		},
+		{
+			"title": "Goonstation #4 RP",
+			"ip": "goon4.goonhub.com",
+			"port": 26400,
+			"url": "https://goon4.goonhub.com"
+		}
+	]
+}

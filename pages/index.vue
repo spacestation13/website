@@ -94,11 +94,11 @@
 	</div>
 </template>
 
-<script>
-export default {
+<script setup>
+definePageMeta({
 	name: 'IndexPage',
 	layout: 'home',
-}
+})
 </script>
 
 <style lang="scss" scoped>

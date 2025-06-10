@@ -1,5 +1,5 @@
 <template>
 	<span class="chip">
-		<font-awesome-icon icon="hat-wizard" /> Light Roleplaying
+		<Icon name="fa6-solid:hat-wizard" /> Light Roleplaying
 	</span>
 </template>

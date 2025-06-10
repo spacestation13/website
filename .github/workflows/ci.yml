@@ -9,41 +9,31 @@ on:
     branches:
       - main
       - master
+  workflow_dispatch:
 
 jobs:
   ci:
-    runs-on: ${{ matrix.os }}
-
-    strategy:
-      matrix:
-        os: [ubuntu-latest]
-        node: [16]
-
+    name: ci
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout 🛎
-        uses: actions/checkout@master
-
-      - name: Setup node env 🏗
-        uses: actions/setup-node@v4
+        uses: actions/checkout@v4
         with:
-          node-version: ${{ matrix.node }}
-          check-latest: true
+          fetch-depth: 0
 
-      - name: Get yarn cache directory path 🛠
-        id: yarn-cache-dir-path
-        run: echo "dir=$(yarn cache dir)" >> $GITHUB_OUTPUT
-
-      - name: Cache node_modules 📦
+      - name: Cache Bun dependencies 📦
         uses: actions/cache@v4
-        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
         with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          path: ~/.bun/install/cache
+          key: ${{ runner.os }}-bun-${{ hashFiles('**/bun.lockb') }}
           restore-keys: |
-            ${{ runner.os }}-yarn-
+            ${{ runner.os }}-bun-
+
+      - name: Setup Bun 🍼
+        uses: oven-sh/setup-bun@v2
 
       - name: Install dependencies 👨🏻‍💻
-        run: yarn
+        run: bun install
 
       - name: Run linter 👀
-        run: yarn lint
+        run: bun run lint:all
