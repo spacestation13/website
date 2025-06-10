@@ -33,9 +33,13 @@ definePageMeta({
 	title: 'Quick Play',
 })
 
-const { data: servers } = await useAsyncData('servers', () => {
-	return queryCollection('servers').order('created', 'asc').all()
-})
+const { data: servers } = await useAsyncData(
+	'servers',
+	() => {
+		return queryCollection('servers').order('created', 'asc').all()
+	},
+	{ server: false },
+)
 </script>
 
 <style lang="scss" scoped>
