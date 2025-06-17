@@ -158,6 +158,13 @@ links (array): objects representing game join links:
 					ip: 'play.monkestation.com',
 					port: 3122,
 				},
+				},
+				{
+					title: 'Monkestation Main 2',
+					url: 'https://play.monkestation.com',
+					ip: 'play.monkestation.com',
+					port: 3122,
+				},
 			],
 		},
 	],
