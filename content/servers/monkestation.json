@@ -1,27 +1,24 @@
 {
-  "name": "Monkestation",
-  "logo": "monkestation.png",
-  "created": "2025-06-18 16:00:00",
-  "tags": [
-    "new",
-    "mediumrp"
-  ],
-  "website": "https://play.monkestation.com",
-  "description": [
-    "Monkestation is a Medium-RP server that balances roleplay opportunities with casual gameplay elements. The server maintains a unique atmosphere where players can engage in serious roleplay while still enjoying lighthearted, nonsensical and less serious moments. Originally created by Twitch streamer and YouTuber The DukeofOok, who also helped establish other servers like Vanderlin, Monkestation has carved out its own niche in the SS13 community. The community focuses on maintaining an environment that remains approachable and helpful for both newcomers and veteran players."
-  ],
-  "links": [
-    {
-      "title": "Monkestation Main 1",
-      "ip": "play.monkestation.com",
-      "port": 3121,
-      "url": "https://play.monkestation.com"
-    },
-    {
-      "title": "Monkestation Main 2",
-      "ip": "play.monkestation.com",
-      "port": 3122,
-      "url": "https://play.monkestation.com"
-    }
-  ]
+	"name": "Monkestation",
+	"logo": "monkestation.png",
+	"created": "2025-06-18 16:00:00",
+	"tags": ["new", "mediumrp"],
+	"website": "https://play.monkestation.com",
+	"description": [
+		"Monkestation is a Medium-RP server that balances roleplay opportunities with casual gameplay elements. The server maintains a unique atmosphere where players can engage in serious roleplay while still enjoying lighthearted, nonsensical and less serious moments. Originally created by Twitch streamer and YouTuber The DukeofOok, who also helped establish other servers like Vanderlin, Monkestation has carved out its own niche in the SS13 community. The community focuses on maintaining an environment that remains approachable and helpful for both newcomers and veteran players."
+	],
+	"links": [
+		{
+			"title": "Monkestation Main 1",
+			"ip": "play.monkestation.com",
+			"port": 3121,
+			"url": "https://play.monkestation.com"
+		},
+		{
+			"title": "Monkestation Main 2",
+			"ip": "play.monkestation.com",
+			"port": 3122,
+			"url": "https://play.monkestation.com"
+		}
+	]
 }
