@@ -1,33 +1,24 @@
 <template>
 	<div class="flex flex-col h-full">
 		<SiteNav />
-		<header v-if="pageTitle" class="page-header">
-			<h1>{{ pageTitle }}</h1>
+		<header v-if="title" class="page-header">
+			<h1>{{ title }}</h1>
 		</header>
 		<div
 			class="flex flex-col flex-grow debris-bg"
-			:class="{ 'no-page-header': !pageTitle }"
+			:class="{ 'no-page-header': !title }"
 		>
-			<Nuxt class="flex-grow mb-8" />
+			<NuxtPage class="flex-grow mb-8" />
 			<SiteFooter />
 		</div>
 	</div>
 </template>
 
-<script>
-export default {
-	name: 'DefaultLayout',
-
-	computed: {
-		pageTitle() {
-			return this.$route.matched.map((r) => {
-				return r.components.default.options
-					? r.components.default.options.pageTitle
-					: r.components.default.pageTitle
-			})[0]
-		},
-	},
-}
+<script setup>
+const route = useRoute()
+const title = computed(() => {
+	return route.meta.title
+})
 </script>
 
 <style lang="scss" scoped>

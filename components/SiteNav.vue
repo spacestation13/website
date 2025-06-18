@@ -30,9 +30,9 @@
 					:class="{ active: navOpen }"
 					@click="navOpen = !navOpen"
 				>
-					<span class="top"></span>
-					<span class="mid"></span>
-					<span class="bottom"></span>
+					<span class="top" />
+					<span class="mid" />
+					<span class="bottom" />
 				</button>
 			</div>
 		</div>
@@ -44,12 +44,8 @@
 	</nav>
 </template>
 
-<script>
-export default {
-	data: () => ({
-		navOpen: false,
-	}),
-}
+<script setup>
+const navOpen = ref(false)
 </script>
 
 <style lang="scss" scoped>
@@ -79,7 +75,7 @@ export default {
 		width: 0;
 		height: 0;
 		border-radius: 50%;
-		background: rgba(var(--color-primary), 0.8);
+		background: color-mix(in srgb, var(--color-primary) 80%, transparent);
 		transition: all 300ms ease-in-out;
 	}
 
@@ -91,7 +87,7 @@ export default {
 	}
 
 	path {
-		fill: theme('colors.primary');
+		fill: var(--color-primary);
 		transition: all 300ms ease-in-out;
 	}
 

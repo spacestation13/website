@@ -1,3 +1,5 @@
-import Vue from 'vue'
 import VueDOMPurifyHTML from 'vue-dompurify-html'
-Vue.use(VueDOMPurifyHTML)
+
+export default defineNuxtPlugin((nuxtApp) => {
+	nuxtApp.vueApp.use(VueDOMPurifyHTML)
+})

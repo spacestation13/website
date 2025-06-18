@@ -1,0 +1,35 @@
+@layer base {
+	:root {
+		--color-primary: #e23229;
+		--color-secondary: #343841;
+		--color-tertiary: #d5d5d5;
+		--color-background: #0e1118;
+		--nav-height: 3.5rem;
+	}
+
+	html,
+	body,
+	#__nuxt,
+	#__layout {
+		height: 100%;
+	}
+
+	html {
+		font-family: 'Open Sans', sans-serif;
+	}
+
+	body {
+		@apply bg-background bg-repeat bg-fixed text-white;
+		background-image: url('~/assets/img/bg.jpg');
+		background-image: url('~/assets/img/bg.webp');
+	}
+
+	a {
+		color: color-mix(in srgb, var(--color-primary), white 5%);
+
+		&:hover,
+		&:active {
+			color: var(--color-primary);
+		}
+	}
+}

@@ -1,0 +1,42 @@
+{
+	"name": "/TG/Station 13",
+	"logo": "tgstation.png",
+	"created": "2022-03-06 13:00:00",
+	"tags": ["experienced", "lightrp", "mediumrp", "casual", "expert"],
+	"website": "https://tgstation13.org",
+	"description": [
+		"/tg/Station 13 (from the /tg/ (Traditional Games) section of 4chan), quickly became the primary open source upstream after Goonstation went closed source, making them the closest thing to 'vanilla' SS13. /tg/station has multiple servers at multiple locations and roleplaying levels, and annoyingly strides to fit their server perfectly between roleplay (RP) levels. Sybil and Basil in the US and Terry in the EU operate as middleground Low-RP/Medium-RP servers. A fourth server called Manuel operates as their middleground Medium-RP/High-RP server, with an EU version in the works since the dawn of man. The gameplay style is a comfortable middle-ground between Goonstation and Baystation 12, and a newbie shouldn’t have too many problems jumping in. They host yearly events that bring in members from the entire SS13 community."
+	],
+	"links": [
+		{
+			"title": "Basil",
+			"ip": "basil.tgstation13.org",
+			"port": 2337
+		},
+		{
+			"title": "Sybil",
+			"ip": "sybil.tgstation13.org",
+			"port": 1337
+		},
+		{
+			"title": "Terry",
+			"ip": "terry.tgstation13.org",
+			"port": 3336
+		},
+		{
+			"title": "Manuel",
+			"ip": "manuel.tgstation13.org",
+			"port": 1447
+		},
+		{
+			"title": "TGMC",
+			"ip": "tgmc.tgstation13.org",
+			"port": 5337
+		},
+		{
+			"title": "Campbell",
+			"ip": "campbell.tgstation13.org",
+			"port": 6337
+		}
+	]
+}

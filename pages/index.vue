@@ -18,7 +18,7 @@
 					</p>
 					<p>
 						Tell your own story in the worlds of Space Station 13, a multiplayer
-						sandbox simulation bristling with features. Developed for over 18
+						sandbox simulation bristling with features. Developed for over 22
 						years with over a thousand contributors, the world of SS13 is
 						ever-changing.
 					</p>
@@ -94,11 +94,11 @@
 	</div>
 </template>
 
-<script>
-export default {
+<script setup>
+definePageMeta({
 	name: 'IndexPage',
 	layout: 'home',
-}
+})
 </script>
 
 <style lang="scss" scoped>

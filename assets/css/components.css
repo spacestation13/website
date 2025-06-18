@@ -20,8 +20,8 @@
 		@apply relative pt-[var(--nav-height)] mb-10 flow-root;
 		background: linear-gradient(
 			135deg,
-			rgba($color-secondary, 0.9) 0%,
-			rgba($color-background, 0.5) 100%
+			color-mix(in srgb, var(--color-secondary) 90%, transparent) 0%,
+			color-mix(in srgb, var(--color-background) 50%, transparent) 100%
 		);
 
 		&:after {
@@ -31,7 +31,11 @@
 			left: 0;
 			right: 0;
 			height: 1px;
-			background: linear-gradient(90deg, $color-tertiary 0%, transparent 70%);
+			background: linear-gradient(
+				90deg,
+				var(--color-tertiary) 0%,
+				transparent 70%
+			);
 			opacity: 0.2;
 		}
 
@@ -45,7 +49,7 @@
 				bottom: -3px;
 				left: 1rem;
 				width: 2px;
-				background: $color-primary;
+				background: var(--color-primary);
 			}
 		}
 
@@ -130,22 +134,22 @@
 	}
 
 	.chip {
-		@apply inline-block px-2 py-1 text-xs font-medium uppercase tracking-wide
+		@apply inline-flex items-center px-2 py-1 text-xs font-medium uppercase tracking-wide
 						border border-tertiary rounded leading-none text-opacity-75
 						border-opacity-75 whitespace-nowrap;
 
-		> svg {
-			@apply mr-1;
+		> span {
+			@apply mr-2;
 		}
 	}
 
 	.switch {
 		@apply relative inline-block;
-		$switch-padding: 4px;
-		$switch-width: 3em;
-		$switch-height: calc($switch-width / 2);
-		width: $switch-width;
-		height: calc(#{$switch-height} + #{$switch-padding});
+		--switch-padding: 4px;
+		--switch-width: 3em;
+		--switch-height: calc(var(--switch-width) / 2);
+		width: var(--switch-width);
+		height: calc(var(--switch-height) + var(--switch-padding));
 
 		input {
 			width: 0;
@@ -155,15 +159,15 @@
 
 		.slider {
 			@apply absolute inset-0 cursor-pointer transition-all duration-300 rounded-full;
-			background: darken($color-tertiary, 20%);
+			background: color-mix(in srgb, var(--color-tertiary), black 20%);
 
 			&:before {
 				content: '';
 				@apply absolute transition-all duration-300 bg-white rounded-full;
-				height: calc(#{calc($switch-width / 2)} - #{$switch-padding});
-				width: calc(#{calc($switch-width / 2)} - #{$switch-padding});
-				left: $switch-padding;
-				bottom: $switch-padding;
+				height: calc(calc(var(--switch-width) / 2) - var(--switch-padding));
+				width: calc(calc(var(--switch-width) / 2) - var(--switch-padding));
+				left: var(--switch-padding);
+				bottom: var(--switch-padding);
 			}
 		}
 
@@ -173,7 +177,7 @@
 
 		input:checked + .slider:before {
 			transform: translateX(
-				calc(#{calc($switch-width / 2)} - #{$switch-padding})
+				calc(calc(var(--switch-width) / 2) - var(--switch-padding))
 			);
 		}
 	}

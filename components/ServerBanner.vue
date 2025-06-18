@@ -5,8 +5,8 @@
 				{{ title }}
 			</div>
 			<div class="text-xs italic">
-				<span v-if="loading" class="opacity-50">
-					<font-awesome-icon class="mr-1" icon="spinner" spin />
+				<span v-if="loading" class="flex items-center opacity-50">
+					<Icon name="svg-spinners:6-dots-scale" class="mr-1" />
 					Updating info...
 				</span>
 				<span v-else-if="error" class="text-primary">
@@ -29,75 +29,62 @@
 	</div>
 </template>
 
-<script>
-export default {
-	props: {
-		title: {
-			type: String,
-			required: true,
-		},
-		ip: {
-			type: String,
-			required: true,
-		},
-		port: {
-			type: Number,
-			required: true,
-		},
-		url: {
-			type: String,
-			required: false,
-			default: '',
-		},
+<script setup>
+const props = defineProps({
+	title: {
+		type: String,
+		required: true,
 	},
-
-	data: () => ({
-		loading: true,
-		requestSource: null,
-		error: false,
-		players: null,
-	}),
-
-	computed: {
-		joinLink() {
-			if (this.url) return this.url
-			return `byond://${this.ip}:${this.port}`
-		},
+	ip: {
+		type: String,
+		required: true,
 	},
-
-	mounted() {
-		this.getStatus()
+	port: {
+		type: Number,
+		required: true,
 	},
-
-	methods: {
-		async getStatus() {
-			this.loading = true
-			this.requestSource = this.$apiNode.CancelToken.source()
-			try {
-				const data = await this.$apiNode.$get('/status', {
-					cancelToken: this.requestSource.token,
-					cache: {
-						ttl: 1 * 60 * 1000,
-					},
-					params: {
-						ip: this.ip,
-						port: this.port,
-					},
-				})
-
-				let gameData = data.meta.jsontopic ? data.response.data : data.response
-				if (typeof gameData === 'string') gameData = JSON.parse(gameData)
-				if (!('players' in gameData) || Number.isNaN(gameData.players)) {
-					throw new TypeError('No players key')
-				}
-				this.players = parseInt(gameData.players)
-			} catch (e) {
-				this.error = true
-			}
-			this.loading = false
-		},
+	url: {
+		type: String,
+		required: false,
+		default: '',
 	},
+})
+
+const loading = ref(true)
+const error = ref(false)
+const players = ref(null)
+
+const joinLink = computed(() => {
+	if (props.url) return props.url
+	return `byond://${props.ip}:${props.port}`
+})
+
+const fetchData = async () => {
+	loading.value = true
+	try {
+		const data = await useNodeApi('/status', {
+			params: {
+				ip: props.ip,
+				port: props.port,
+			},
+		})
+
+		let gameData = data.meta.jsontopic ? data.response.data : data.response
+		if (typeof gameData === 'string') gameData = JSON.parse(gameData)
+		if (!('players' in gameData) || Number.isNaN(gameData.players)) {
+			throw new TypeError('No players key')
+		}
+		players.value = parseInt(gameData.players)
+		error.value = false
+	} catch {
+		error.value = true
+	}
+	loading.value = false
 }
+
+onMounted(() => {
+	fetchData()
+})
 </script>
 
 <style lang="scss" scoped>

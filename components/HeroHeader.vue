@@ -12,27 +12,66 @@
 				<NuxtLink to="/play/how-to" class="cta">Play Now</NuxtLink>
 			</div>
 		</div>
-		<video
-			autoplay
-			loop
-			muted
-			:poster="require('~/assets/img/video-poster.webp')"
-			class="absolute z-10 w-auto min-w-full min-h-full max-w-none"
-		>
-			<source src="/hero.mp4" type="video/mp4" />
-		</video>
+		<template v-if="showVideo">
+			<video
+				ref="vid"
+				playsinline
+				autoplay
+				loop
+				muted
+				poster="~/assets/img/video-poster.webp"
+				class="absolute z-10 w-auto min-w-full min-h-full max-w-none"
+			>
+				<source src="/hero.mp4" type="video/mp4" />
+			</video>
+			<button
+				type="button"
+				class="absolute bottom-2 right-4 z-10"
+				@click="toggleVideo"
+			>
+				<Icon
+					:name="paused ? 'fa6-solid:circle-play' : 'fa6-solid:circle-pause'"
+					class="shadow-lg shadow-black opacity-50 hover:opacity-80 transition-opacity duration-200"
+					size="2em"
+				/>
+			</button>
+		</template>
 	</header>
 </template>
+
+<script setup>
+const vid = ref(null)
+const showVideo = ref(false)
+const paused = ref(false)
+
+onMounted(() => {
+	if (!window.matchMedia('(prefers-reduced-motion)').matches) {
+		showVideo.value = true
+	}
+})
+
+const toggleVideo = () => {
+	if (vid.value.paused) {
+		paused.value = false
+		vid.value.play()
+	} else {
+		paused.value = true
+		vid.value.pause()
+	}
+}
+</script>
 
 <style lang="scss" scoped>
 .intro {
 	@apply relative flex items-center justify-center overflow-hidden border-b
 		border-tertiary border-opacity-10 bg-secondary bg-opacity-30;
 
+	background-image: url('~/assets/img/video-poster.webp');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
 	height: calc(100vh - 15rem);
 	min-height: 40rem;
-	/* box-shadow: 0 1px 1px 1px rgb(255 255 255 / 10%), 0 10px 70px 20px #0e1118; */
-	/* clip-path: polygon(0 0%, 100% 0, 100% calc(100% - (100vw * 0.07)), 0 100%); */
 
 	&:after {
 		content: '';
@@ -42,8 +81,16 @@
 	}
 
 	video {
+		display: none;
 		filter: brightness(0.75) saturate(0.75);
 		image-rendering: pixelated;
+	}
+
+	@screen sm {
+		background-image: none;
+		video {
+			display: block;
+		}
 	}
 }
 
@@ -64,7 +111,7 @@
 		top: calc(100% + 2px);
 		background: linear-gradient(
 			135deg,
-			rgb(var(--color-primary)) 0%,
+			var(--color-primary) 0%,
 			rgb(177 48 40) 100%
 		);
 	}

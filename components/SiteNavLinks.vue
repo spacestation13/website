@@ -10,10 +10,10 @@
 					<a
 						href="#"
 						class="page-link dropdown-parent"
-						:class="{ 'nuxt-link-active': subIsActive('/play') }"
+						:class="{ 'router-link-active': subIsActive('/play') }"
 						@click.prevent="toggle"
 					>
-						Play Now <font-awesome-icon icon="angle-down" />
+						Play Now <Icon name="fa6-solid:angle-down" class="ml-2" />
 					</a>
 				</template>
 				<div class="nav-sub__links">
@@ -32,7 +32,7 @@
 				rel="external"
 				aria-label="Twitter"
 			>
-				<font-awesome-icon :icon="['fab', 'twitter']" />
+				<Icon name="fa6-brands:twitter" />
 			</a>
 			<a
 				href="https://www.facebook.com/SpaceStation13"
@@ -40,30 +40,28 @@
 				rel="external"
 				aria-label="Facebook"
 			>
-				<font-awesome-icon :icon="['fab', 'facebook']" />
+				<Icon name="fa6-brands:facebook" />
 			</a>
 		</div>
 	</div>
 </template>
 
-<script>
-export default {
-	props: {
-		layout: {
-			type: String,
-			required: false,
-			default: 'horizontal',
-		},
+<script setup>
+defineProps({
+	layout: {
+		type: String,
+		required: false,
+		default: 'horizontal',
 	},
+})
 
-	methods: {
-		subIsActive(input) {
-			const paths = Array.isArray(input) ? input : [input]
-			return paths.some((path) => {
-				return this.$route.path.indexOf(path) === 0
-			})
-		},
-	},
+const route = useRoute()
+
+const subIsActive = (input) => {
+	const paths = Array.isArray(input) ? input : [input]
+	return paths.some((path) => {
+		return route.path.indexOf(path) === 0
+	})
 }
 </script>
 
@@ -81,14 +79,14 @@ export default {
 			margin-bottom: -2px;
 		}
 
-		&.dropdown-parent.nuxt-link-active:after,
-		&.nuxt-link-exact-active:after {
+		&.dropdown-parent.router-link-active:after,
+		&.router-link-exact-active:after {
 			height: 2px;
 		}
 
 		&:hover,
 		&:active {
-			&.dropdown-parent.nuxt-link-active:after,
+			&.dropdown-parent.router-link-active:after,
 			&:after {
 				height: calc(100% + 2px);
 			}
@@ -113,15 +111,15 @@ export default {
 				margin-left: -2px;
 			}
 
-			&.dropdown-parent.nuxt-link-active:after,
-			&.nuxt-link-exact-active:after {
+			&.dropdown-parent.router-link-active:after,
+			&.router-link-exact-active:after {
 				height: auto;
 				width: 2px;
 			}
 
 			&:hover,
 			&:active {
-				&.dropdown-parent.nuxt-link-active:after,
+				&.dropdown-parent.router-link-active:after,
 				&:after {
 					width: calc(100% + 2px);
 				}
@@ -175,7 +173,7 @@ export default {
 				}
 			}
 
-			&.nuxt-link-exact-active:after {
+			&.router-link-exact-active:after {
 				@apply left-0;
 			}
 

@@ -1,13 +1,7 @@
 <template>
 	<div class="h-full">
 		<SiteNav />
-		<Nuxt />
+		<NuxtPage />
 		<SiteFooter />
 	</div>
 </template>
-
-<script>
-export default {
-	name: 'HomeLayout',
-}
-</script>

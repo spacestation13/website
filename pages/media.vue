@@ -22,14 +22,9 @@
 	</div>
 </template>
 
-<script>
-export default {
+<script setup>
+definePageMeta({
 	name: 'PageMedia',
-	pageTitle: 'Media',
-	head() {
-		return {
-			title: 'Media',
-		}
-	},
-}
+	title: 'Media',
+})
 </script>

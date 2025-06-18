@@ -3,10 +3,10 @@
 		<template #toggler="{ toggle }">
 			<button
 				type="button"
-				class="text-white text-opacity-75 hover:text-opacity-100"
+				class="flex items-center text-white text-opacity-75 hover:text-opacity-100"
 				@click="toggle"
 			>
-				<font-awesome-icon icon="gear" size="lg" />
+				<Icon name="fa6-solid:gear" size="1.25em" />
 			</button>
 		</template>
 		<div class="dropdown-area">
@@ -17,7 +17,7 @@
 						v-model="dFilters.includeAdult"
 						type="checkbox"
 					/>
-					<span class="slider"></span>
+					<span class="slider" />
 				</label>
 				<label for="filterIncludeAdult">Include adult-content servers</label>
 			</div>
@@ -25,37 +25,35 @@
 	</Dropdown>
 </template>
 
-<script>
-export default {
-	props: {
-		filters: {
-			type: Object,
-			default: () => ({}),
-		},
+<script setup>
+const props = defineProps({
+	filters: {
+		type: Object,
+		default: () => ({}),
 	},
+})
 
-	data: () => ({
-		dFilters: {
-			includeAdult: false,
-		},
-	}),
+const emit = defineEmits(['filtersChanged'])
 
-	watch: {
-		filters: {
-			deep: true,
-			handler(newVal) {
-				this.dFilters = newVal
-			},
-		},
+const dFilters = ref({
+	includeAdult: false,
+})
 
-		dFilters: {
-			deep: true,
-			handler(newVal) {
-				this.$emit('filtersChanged', newVal)
-			},
-		},
+watch(
+	() => props.filters,
+	(newVal) => {
+		dFilters.value = newVal
 	},
-}
+	{ deep: true },
+)
+
+watch(
+	dFilters,
+	(newVal) => {
+		emit('filtersChanged', newVal)
+	},
+	{ deep: true },
+)
 </script>
 
 <style lang="scss" scoped>

@@ -8,19 +8,22 @@
 	</div>
 </template>
 
-<script>
-export default {
-	name: 'ErrorLayout',
-	props: {
-		error: {
-			type: null,
-			default: null,
-		},
+<script setup>
+const props = defineProps({
+	error: {
+		type: Object,
+		default: null,
 	},
-	head() {
-		return {
-			title: 'Error',
-		}
-	},
-}
+})
+
+const title = computed(() => {
+	if (props.error.statusCode === 404) {
+		return 'Page not found'
+	}
+	return 'An error occurred'
+})
+
+useHead({
+	title: `${title.value} - Space Station 13`,
+})
 </script>

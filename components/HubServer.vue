@@ -1,6 +1,6 @@
 <template>
 	<div class="hub-server">
-		<div v-dompurify-html="newStatus" class="hub-server__status"></div>
+		<div v-dompurify-html="newStatus" class="hub-server__status" />
 		<div class="ml-4 text-center">
 			<a :href="`byond://BYOND.world.${urlId}`" class="cta cta--sm px-10">
 				Join
@@ -13,78 +13,74 @@
 	</div>
 </template>
 
-<script>
-export default {
-	props: {
-		id: {
-			type: String,
-			required: true,
-		},
-		urlId: {
-			type: String,
-			required: true,
-		},
-		status: {
-			type: String,
-			required: true,
-		},
-		players: {
-			type: Number,
-			required: true,
-		},
-		meta: {
-			type: Object,
-			required: false,
-			default: () => ({}),
-		},
+<script setup>
+const props = defineProps({
+	id: {
+		type: String,
+		required: true,
 	},
-
-	computed: {
-		newStatus() {
-			// Handle adding brackets to server text
-			let newStatus = this.status
-			const statusSplit = this.status.split('<br>')
-			let addPrefixBracket = false
-			let addSuffixBracket = false
-
-			if (statusSplit.length > 0) {
-				// Check first line
-				const leftFirstCount = statusSplit[0].split('[').length - 1
-				const rightFirstCount = statusSplit[0].split(']').length - 1
-				if (rightFirstCount > leftFirstCount) {
-					addPrefixBracket = true
-				}
-
-				// Check last line
-				const leftLastCount =
-					statusSplit[statusSplit.length - 1].split('[').length - 1
-				const rightLastCount =
-					statusSplit[statusSplit.length - 1].split(']').length - 1
-				if (leftLastCount > rightLastCount) {
-					addSuffixBracket = true
-				}
-			}
-
-			// Actually add it
-			if (addPrefixBracket) {
-				newStatus = '[' + newStatus
-			}
-			if (addSuffixBracket) {
-				newStatus = newStatus + ']'
-			}
-
-			return newStatus
-		},
+	urlId: {
+		type: String,
+		required: true,
 	},
+	status: {
+		type: String,
+		required: true,
+	},
+	players: {
+		type: Number,
+		required: true,
+	},
+	meta: {
+		type: Object,
+		required: false,
+		default: () => ({}),
+	},
+})
 
-	mounted() {
-		// Handle URLs
-		const links = this.$el.querySelectorAll('a')
-		for (const link of links) {
-			link.setAttribute('target', '_blank')
+const newStatus = computed(() => {
+	// Handle adding brackets to server text
+	let newStatus = props.status
+	const statusSplit = props.status.split('<br>')
+	let addPrefixBracket = false
+	let addSuffixBracket = false
+
+	if (statusSplit.length > 0) {
+		// Check first line
+		const leftFirstCount = statusSplit[0].split('[').length - 1
+		const rightFirstCount = statusSplit[0].split(']').length - 1
+		if (rightFirstCount > leftFirstCount) {
+			addPrefixBracket = true
 		}
-	},
-}
+
+		// Check last line
+		const leftLastCount =
+			statusSplit[statusSplit.length - 1].split('[').length - 1
+		const rightLastCount =
+			statusSplit[statusSplit.length - 1].split(']').length - 1
+		if (leftLastCount > rightLastCount) {
+			addSuffixBracket = true
+		}
+	}
+
+	// Actually add it
+	if (addPrefixBracket) {
+		newStatus = '[' + newStatus
+	}
+	if (addSuffixBracket) {
+		newStatus = newStatus + ']'
+	}
+
+	return newStatus
+})
+
+onMounted(() => {
+	// Handle URLs
+	const links = document.querySelectorAll('.hub-server a')
+	for (const link of links) {
+		link.setAttribute('target', '_blank')
+	}
+})
 </script>
 
 <style lang="scss" scoped>

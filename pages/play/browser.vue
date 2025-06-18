@@ -19,14 +19,14 @@
 						>
 					</span>
 					<HubServerSearch v-model="search" />
-					<HubFilters :filters="filters" @filtersChanged="onFiltersChange" />
+					<HubFilters :filters="filters" @filters-changed="onFiltersChange" />
 				</div>
 			</div>
 			<div v-if="loading" class="p-10 text-center">
-				<font-awesome-icon icon="spinner" spin size="2x" />
+				<Icon name="svg-spinners:6-dots-scale" size="2em" />
 			</div>
 			<div v-else-if="error" class="p-10 text-center text-primary">
-				<font-awesome-icon icon="circle-exclamation" size="2x" class="mb-2" />
+				<Icon name="fa6-solid:circle-exclamation" size="2em" class="mb-2" />
 				<div class="font-medium">
 					Unable to load servers, please reload to try again.
 				</div>
@@ -50,13 +50,13 @@
 				/>
 				<div class="flex items-center gap-2">
 					<HubServerSearch v-model="search" />
-					<HubFilters :filters="filters" @filtersChanged="onFiltersChange" />
+					<HubFilters :filters="filters" @filters-changed="onFiltersChange" />
 				</div>
 			</div>
 		</div>
 
 		<div class="disclaimer">
-			<font-awesome-icon icon="circle-exclamation" size="8x" />
+			<Icon name="fa6-solid:circle-exclamation" size="8em" />
 			<p class="mb-2 font-bold">Heads up!</p>
 			<p>
 				Some servers are filtered out by default because they advertise as
@@ -68,74 +68,60 @@
 	</div>
 </template>
 
-<script>
-export default {
+<script setup>
+definePageMeta({
 	name: 'PageServerBrowser',
-	pageTitle: 'Server Browser',
+	title: 'Server Browser',
+})
 
-	data: () => ({
-		loading: true,
-		error: false,
-		servers: [],
-		search: '',
-		page: 1,
-		perPage: 15,
-		filters: {},
-	}),
+const loading = ref(true)
+const error = ref(false)
+const servers = ref([])
+const search = ref('')
+const page = ref(1)
+const perPage = ref(15)
+const filters = ref({})
 
-	head() {
-		return {
-			title: 'Server Browser',
-		}
-	},
+const searchedServers = computed(() => {
+	return servers.value.filter((server) => {
+		if (server?.meta?.adult && !filters.value.includeAdult) return false
+		return server.status.toLowerCase().includes(search.value.toLowerCase())
+	})
+})
 
-	computed: {
-		searchedServers() {
-			return this.servers.filter((server) => {
-				if (server?.meta?.adult && !this.filters.includeAdult) return false
-				return server.status.toLowerCase().includes(this.search.toLowerCase())
-			})
-		},
+const filteredServers = computed(() => {
+	return searchedServers.value.slice(
+		perPage.value * (page.value - 1),
+		perPage.value * page.value,
+	)
+})
 
-		filteredServers() {
-			return this.searchedServers.slice(
-				this.perPage * (this.page - 1),
-				this.perPage * this.page
-			)
-		},
+const totalPages = computed(() => {
+	return Math.floor(searchedServers.value.length / perPage.value) || 1
+})
 
-		totalPages() {
-			return Math.floor(this.searchedServers.length / this.perPage) || 1
-		},
-	},
+watch(totalPages, (val) => {
+	if (val < page.value) page.value = val
+})
 
-	watch: {
-		totalPages(val) {
-			if (val < this.page) this.page = val
-		},
-	},
+onMounted(async () => {
+	loading.value = true
+	try {
+		const { response } = await useNodeApi('/hub', { timeout: 5000 })
+		const serverList = response.sort((a, b) => b.players - a.players)
+		servers.value = serverList
+	} catch {
+		error.value = true
+	}
+	loading.value = false
+})
 
-	async mounted() {
-		this.loading = true
-		try {
-			const data = await this.$apiNode.$get('/hub', { cache: false })
-			const servers = data.response.sort((a, b) => b.players - a.players)
-			this.servers = servers
-		} catch (e) {
-			this.error = true
-		}
-		this.loading = false
-	},
+const onPageChange = (newPage) => {
+	page.value = newPage
+}
 
-	methods: {
-		onPageChange(page) {
-			this.page = page
-		},
-
-		onFiltersChange(filters) {
-			this.filters = filters
-		},
-	},
+const onFiltersChange = (newFilters) => {
+	filters.value = newFilters
 }
 </script>
 
@@ -160,7 +146,7 @@ export default {
 	@apply relative bg-secondary bg-opacity-50 rounded-sm pl-12 pr-4 py-6 mt-12
 		overflow-hidden;
 
-	> svg {
+	> span {
 		@apply absolute -top-6 -left-11 opacity-25;
 		z-index: -1;
 	}

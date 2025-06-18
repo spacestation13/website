@@ -1,0 +1,18 @@
+{
+	"name": "BeeStation",
+	"logo": "beestation.png",
+	"created": "2022-03-06 16:00:00",
+	"tags": ["new", "mediumrp"],
+	"website": "https://beestation13.com",
+	"description": [
+		"BeeStation is a roleplay server that greatly focuses on being newbie-friendly. There is also a group of mentors who can help you through the steep learning curve of SS13, by answering your questions, or just walking you through basic tasks on the station. Another ongoing goal of theirs is to be the most balanced SS13 server, by constantly tweaking gameplay features to be more fun, and fair. Rounds on BeeStation tend to be very chaotic and fast-paced. The server is a good place to experience high population, and fun features. The code for the server was forked off of the /tg/station codebase."
+	],
+	"links": [
+		{
+			"title": "BeeStation Sage",
+			"ip": "sage.beestation13.com",
+			"port": 7878,
+			"url": "https://beestation13.com/join/bs_sage"
+		}
+	]
+}

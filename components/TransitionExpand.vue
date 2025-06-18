@@ -1,62 +1,60 @@
-<script>
-// Yoinked from https://github.com/maoberlehner/transition-to-height-auto-with-vue
+<script setup>
+// Utility function to force browser repaint
+const forceRepaint = (element) => {
+	// eslint-disable-next-line @typescript-eslint/no-unused-expressions
+	getComputedStyle(element).height
+}
 
-export default {
-	name: `TransitionExpand`,
-	functional: true,
-	render(createElement, context) {
-		const data = {
-			props: {
-				name: `expand`,
-			},
-			on: {
-				afterEnter(element) {
-					// eslint-disable-next-line no-param-reassign
-					element.style.height = `auto`
-				},
-				enter(element) {
-					const { width } = getComputedStyle(element)
-					/* eslint-disable no-param-reassign */
-					element.style.width = width
-					element.style.position = `absolute`
-					element.style.visibility = `hidden`
-					element.style.height = `auto`
-					/* eslint-enable */
-					const { height } = getComputedStyle(element)
-					/* eslint-disable no-param-reassign */
-					element.style.width = null
-					element.style.position = null
-					element.style.visibility = null
-					element.style.height = 0
-					/* eslint-enable */
-					// Force repaint to make sure the
-					// animation is triggered correctly.
-					// eslint-disable-next-line no-unused-expressions
-					getComputedStyle(element).height
-					requestAnimationFrame(() => {
-						// eslint-disable-next-line no-param-reassign
-						element.style.height = height
-					})
-				},
-				leave(element) {
-					const { height } = getComputedStyle(element)
-					// eslint-disable-next-line no-param-reassign
-					element.style.height = height
-					// Force repaint to make sure the
-					// animation is triggered correctly.
-					// eslint-disable-next-line no-unused-expressions
-					getComputedStyle(element).height
-					requestAnimationFrame(() => {
-						// eslint-disable-next-line no-param-reassign
-						element.style.height = 0
-					})
-				},
-			},
-		}
-		return createElement(`transition`, data, context.children)
-	},
+// Transition event handlers
+const afterEnter = (element) => {
+	element.style.height = 'auto'
+}
+
+const enter = (element) => {
+	const width = getComputedStyle(element).width
+
+	element.style.width = width
+	element.style.position = 'absolute'
+	element.style.visibility = 'hidden'
+	element.style.height = 'auto'
+
+	const height = getComputedStyle(element).height
+
+	element.style.width = null
+	element.style.position = null
+	element.style.visibility = null
+	element.style.height = '0'
+
+	// Force repaint to make sure the animation is triggered correctly
+	forceRepaint(element)
+
+	requestAnimationFrame(() => {
+		element.style.height = height
+	})
+}
+
+const leave = (element) => {
+	const height = getComputedStyle(element).height
+	element.style.height = height
+
+	forceRepaint(element)
+
+	requestAnimationFrame(() => {
+		element.style.height = '0'
+	})
 }
 </script>
+
+<template>
+	<Transition
+		name="expand"
+		@enter="enter"
+		@after-enter="afterEnter"
+		@leave="leave"
+	>
+		<slot />
+	</Transition>
+</template>
 
 <style scoped>
 * {
@@ -74,7 +72,7 @@ export default {
 	overflow: hidden;
 }
 
-.expand-enter,
+.expand-enter-from,
 .expand-leave-to {
 	height: 0;
 }

@@ -1,0 +1,12 @@
+@theme {
+	/* --color-primary: rgb(226, 50, 41);
+  --color-secondary: rgb(52, 56, 65);
+  --color-tertiary: rgb(213, 213, 213);
+  --color-background: rgb(14, 17, 24); */
+	--color-primary: #e23229;
+	--color-secondary: #343841;
+	--color-tertiary: #d5d5d5;
+	--color-background: #0e1118;
+
+	--nav-height: 3.5rem;
+}

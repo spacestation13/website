@@ -34,9 +34,9 @@
 					</p>
 					<a href="https://www.byond.com/download/" class="cta" target="_blank">
 						Download BYOND
-						<font-awesome-icon
-							icon="external-link"
-							class="relative ml-2 top-[-1px]"
+						<Icon
+							name="fa6-solid:square-arrow-up-right"
+							class="relative ml-2 bottom-[-2px]"
 						/>
 					</a>
 				</div>
@@ -55,9 +55,9 @@
 					</p>
 					<a href="https://secure.byond.com/Join" class="cta" target="_blank">
 						Register Account
-						<font-awesome-icon
-							icon="external-link"
-							class="relative ml-2 top-[-1px]"
+						<Icon
+							name="fa6-solid:square-arrow-up-right"
+							class="relative ml-2 bottom-[-2px]"
 						/>
 					</a>
 				</div>
@@ -96,16 +96,11 @@
 	</div>
 </template>
 
-<script>
-export default {
+<script setup>
+definePageMeta({
 	name: 'PageHowToPlay',
-	pageTitle: 'How To Play',
-	head() {
-		return {
-			title: 'How To Play',
-		}
-	},
-}
+	title: 'How To Play',
+})
 </script>
 
 <style lang="scss" scoped>
@@ -156,7 +151,7 @@ export default {
 		height: 4px;
 		background: linear-gradient(
 			135deg,
-			rgb(var(--color-primary)) 0%,
+			var(--color-primary) 0%,
 			rgb(177 48 40) 100%
 		);
 	}

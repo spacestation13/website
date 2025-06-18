@@ -10,19 +10,20 @@
 				width="80"
 				height="80"
 			/>
-			<p>
+			<p class="flex items-center justify-center">
 				Copyright
-				<font-awesome-icon icon="copyright" class="mx-1" />
+				<Icon name="fa6-solid:copyright" class="mx-2" />
 				{{ new Date().getFullYear() }} Space Station 13
 			</p>
-			<p>
+			<p class="flex items-center justify-center">
 				Source available on
 				<a
+					class="inline-flex items-center"
 					href="https://github.com/spacestation13/website"
 					rel="external"
 					target="_blank"
 				>
-					<font-awesome-icon :icon="['fab', 'github']" class="ml-1" />
+					<Icon name="fa6-brands:github" class="mx-1" />
 					GitHub
 				</a>
 			</p>

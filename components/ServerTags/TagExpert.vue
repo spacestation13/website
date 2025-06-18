@@ -1,3 +1,3 @@
 <template>
-	<span class="chip"> <font-awesome-icon icon="dragon" /> Expert </span>
+	<span class="chip"> <Icon name="fa6-solid:dragon" /> Expert </span>
 </template>
