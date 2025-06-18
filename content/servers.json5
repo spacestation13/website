@@ -143,7 +143,7 @@ links (array): objects representing game join links:
 			tags: ['new', 'mediumrp'],
 			website: 'https://play.monkestation.com/',
 			description: [
-				'Monkestation is a Medium-Rare Roleplay SS13 server, medium rare meaning we like there to be opportunity for roleplaying as you desire but also some of the silliness of less roleplay. It’s a fine line to straddle and we are constantly changing in all ways, looking to improve and keep the server fun, friendly and helpful to all players, new and old. We are based in the US and originally the creation of twitch streamer and youtuber The Duke of Ook, who has recently championed the start of other servers such as Vanderlin. Monkestation is one of the newer servers on the SS13 block but we hope you will find our flavour of silliness a fun time!',
+				'Monkestation is a Medium-RP server that balances roleplay opportunities with casual gameplay elements. The server maintains a unique atmosphere where players can engage in serious roleplay while still enjoying lighthearted, nonsensical and less serious moments. Originally created by Twitch streamer and YouTuber The DukeofOok, who also helped establish other servers like Vanderlin, Monkestation has carved out its own niche in the SS13 community. The community focuses on maintaining an environment that remains approachable and helpful for both newcomers and veteran players while developing new features.',
 			],
 			links: [
 				{
