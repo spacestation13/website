@@ -52,8 +52,32 @@
 					</p>
 				</div>
 				<div class="flex flex-col flex-shrink-0 gap-1 sm:w-72">
+					<span v-if="relays">
+						<Dropdown class="relay-select mb-2" :inline>
+							<template #toggler="{ toggle }">
+								<a href="#" class="dropdown-parent" @click.prevent="toggle">
+									{{ selectedRelay?.label ? 'Relay: ' : ''
+									}}{{ selectedRelay?.label || 'Select Relay' }}
+									<Icon name="fa6-solid:angle-down" class="ml-2" />
+								</a>
+							</template>
+
+							<template #default="{ close }">
+								<div class="relay-select__links relay-list">
+									<a
+										v-for="relay in relays"
+										:key="relay.id"
+										href="#"
+										@click.prevent="((selectedRelay = relay), close())"
+									>
+										{{ relay.label }}
+									</a>
+								</div>
+							</template>
+						</Dropdown>
+					</span>
 					<ServerBanner
-						v-for="(link, index) in links"
+						v-for="(link, index) in resolvedLinks"
 						:key="index"
 						v-bind="link"
 					/>
@@ -64,7 +88,7 @@
 </template>
 
 <script setup>
-defineProps({
+const props = defineProps({
 	name: {
 		type: String,
 		required: true,
@@ -91,6 +115,21 @@ defineProps({
 		type: Array,
 		required: true,
 	},
+	relays: {
+		type: Array,
+		required: false,
+	},
+})
+
+const selectedRelay = ref(props.relays?.[0] || null)
+
+const resolvedLinks = computed(() => {
+	if (!selectedRelay.value) return props.links
+
+	return props.links.map((link) => ({
+		...link,
+		ip: selectedRelay.value.host,
+	}))
 })
 
 const getTagComponent = (tag) => {
@@ -113,6 +152,22 @@ h2 {
 	picture {
 		@apply mr-3;
 		width: 50px;
+	}
+}
+
+.relay-list {
+	@apply flex flex-col bg-background bg-opacity-80 rounded-sm mt-1 overflow-hidden;
+
+	a {
+		@apply px-3 py-2 text-sm transition-colors cursor-pointer;
+
+		&:hover {
+			@apply bg-background bg-opacity-60;
+		}
+
+		&.active {
+			@apply bg-primary text-white;
+		}
 	}
 }
 </style>

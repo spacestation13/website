@@ -1,4 +1,4 @@
-import { defineContentConfig, defineCollection, z } from '@nuxt/content'
+import { defineCollection, defineContentConfig, z } from '@nuxt/content'
 
 export default defineContentConfig({
 	collections: {
@@ -18,6 +18,13 @@ export default defineContentConfig({
 						ip: z.string(),
 						port: z.number(),
 						url: z.string().optional(),
+					}),
+				),
+				relays: z.array(
+					z.object({
+						id: z.string(),
+						label: z.string(),
+						host: z.string(),
 					}),
 				),
 			}),

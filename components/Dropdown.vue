@@ -9,7 +9,7 @@
 		</slot>
 		<transition-expand v-if="inline">
 			<div v-if="active">
-				<slot />
+				<slot v-bind="{ toggle, close: away }" />
 			</div>
 		</transition-expand>
 		<transition v-else name="dropdown-content">
@@ -18,7 +18,7 @@
 				class="absolute top-full z-40"
 				:class="{ 'left-0': align === 'left', 'right-0': align === 'right' }"
 			>
-				<slot />
+				<slot v-bind="{ toggle, close: away }" />
 			</div>
 		</transition>
 	</div>
