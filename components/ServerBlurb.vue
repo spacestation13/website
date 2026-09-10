@@ -29,8 +29,23 @@
 							:key="index"
 						/>
 					</div>
-					<div v-if="website" class="ml-auto flex-shrink 0">
+					<div v-if="wiki || website" class="ml-auto flex flex-shrink-0 gap-2">
 						<a
+							v-if="wiki"
+							:href="wiki"
+							:aria-label="`${name} Wiki`"
+							target="_blank"
+							rel="external"
+							class="cta cta--xs cta--grey block whitespace-nowrap"
+						>
+							Wiki
+							<Icon
+								name="fa6-solid:square-arrow-up-right"
+								class="relative ml-1 bottom-[-1px]"
+							/>
+						</a>
+						<a
+							v-if="website"
 							:href="website"
 							target="_blank"
 							rel="external"
@@ -79,6 +94,11 @@ defineProps({
 		default: () => [],
 	},
 	website: {
+		type: String,
+		required: false,
+		default: '',
+	},
+	wiki: {
 		type: String,
 		required: false,
 		default: '',

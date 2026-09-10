@@ -11,6 +11,7 @@ export default defineContentConfig({
 				created: z.date(),
 				tags: z.array(z.string()),
 				website: z.string(),
+				wiki: z.string(),
 				description: z.array(z.string()),
 				links: z.array(
 					z.object({
