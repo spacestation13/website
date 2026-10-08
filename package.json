@@ -28,7 +28,8 @@
 		"@types/bun": "latest",
 		"eslint-config-prettier": "^10.1.5",
 		"prettier": "3.5.3",
-		"sass-embedded": "^1.89.1"
+		"sass-embedded": "^1.89.1",
+		"tailwindcss": "^3.4.17"
 	},
 	"peerDependencies": {
 		"typescript": "^5"
@@ -41,11 +42,15 @@
 		"@nuxt/image": "1.10.0",
 		"@nuxtjs/sitemap": "7.3.1",
 		"@nuxtjs/tailwindcss": "^6.0.0",
+		"better-sqlite3": "^13.0.3",
 		"eslint": "^9.0.0",
 		"nuxt": "^3.17.5",
 		"vue": "^3.5.16",
 		"vue-dompurify-html": "^5.3.0",
 		"vue-router": "^4.5.1"
+	},
+	"overrides": {
+		"better-sqlite3": "13.0.3"
 	},
 	"trustedDependencies": [
 		"@parcel/watcher",
